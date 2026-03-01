@@ -1,0 +1,82 @@
+Analyzing krentals...                                           
+
+  error - The argument type 'CardTheme' can't be assigned to the parameter type 'CardThemeData?'.  - lib\core\theme\app_theme.dart:43:16 - argument_type_not_assignable
+  error - Undefined class 'ConnectivityService' - lib\data\repositories\car_repository.dart:29:9 - undefined_class
+  error - Undefined class 'ConnectivityService' - lib\data\repositories\car_repository.dart:33:14 - undefined_class
+  error - Undefined class 'ConnectivityService' - lib\data\repositories\car_repository.dart:70:9 - undefined_class
+  error - Undefined class 'ConnectivityService' - lib\data\repositories\car_repository.dart:75:14 - undefined_class
+  error - The function 'AppBlocObserver' isn't defined - lib\main.dart:16:19 - undefined_function
+  error - Undefined name 'ServiceLocator' - lib\main.dart:19:3 - undefined_identifier
+  error - Undefined name 'ServiceLocator' - lib\main.dart:33:25 - undefined_identifier
+  error - Undefined name 'ServiceLocator' - lib\main.dart:38:25 - undefined_identifier
+  error - Undefined name 'BookingDateUtils' - lib\presentation\blocs\booking\booking_bloc.dart:210:18 - undefined_identifier
+  error - The method 'DateRange' isn't defined for the type 'BookingBloc' - lib\presentation\blocs\booking\booking_bloc.dart:354:21 - undefined_method
+  error - Undefined name 'BookingDateUtils' - lib\presentation\blocs\booking\booking_bloc.dart:357:9 - undefined_identifier
+  error - Target of URI doesn't exist: '../../core/utils/date_utils.dart' - lib\presentation\screens\booking_screen.dart:7:8 - uri_does_not_exist
+  error - The method 'DateRange' isn't defined for the type '_DateSelectionBody' - lib\presentation\screens\booking_screen.dart:214:25 - undefined_method
+  error - Undefined name 'BookingDateUtils' - lib\presentation\screens\booking_screen.dart:216:17 - undefined_identifier
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\booking_screen.dart:256:33 - unnecessary_underscores
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\booking_screen.dart:256:37 - unnecessary_underscores
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\booking_screen.dart:308:34 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\booking_screen.dart:365:31 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\booking_screen.dart:367:50 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\booking_screen.dart:451:33 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\booking_screen.dart:453:52 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\booking_screen.dart:498:33 - deprecated_member_use
+   info - An uninitialized field should have an explicit type annotation - lib\presentation\screens\booking_screen.dart:547:9 - prefer_typing_uninitialized_variables
+   info - Missing type annotation - lib\presentation\screens\booking_screen.dart:547:9 - strict_top_level_inference
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\booking_screen.dart:561:40 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\booking_screen.dart:639:45 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\booking_screen.dart:655:45 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\booking_screen.dart:658:56 - deprecated_member_use
+  error - Undefined name 'BookingDateUtils' - lib\presentation\screens\booking_screen.dart:710:34 - undefined_identifier
+  error - Undefined name 'BookingDateUtils' - lib\presentation\screens\booking_screen.dart:717:34 - undefined_identifier
+  error - Target of URI doesn't exist: '../../core/utils/date_utils.dart' - lib\presentation\screens\car_detail_screen.dart:8:8 - uri_does_not_exist
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\car_detail_screen.dart:49:39 - deprecated_member_use
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\car_detail_screen.dart:68:42 - unnecessary_underscores
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\car_detail_screen.dart:71:42 - unnecessary_underscores
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\car_detail_screen.dart:71:46 - unnecessary_underscores
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\car_detail_screen.dart:92:50 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\car_detail_screen.dart:105:45 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\car_detail_screen.dart:292:37 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\car_detail_screen.dart:354:35 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\car_detail_screen.dart:356:54 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\car_detail_screen.dart:383:37 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\car_detail_screen.dart:385:56 - deprecated_member_use
+  error - Undefined name 'BookingDateUtils' - lib\presentation\screens\car_detail_screen.dart:393:22 - undefined_identifier
+  error - Undefined name 'BookingDateUtils' - lib\presentation\screens\car_detail_screen.dart:393:65 - undefined_identifier
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\car_detail_screen.dart:422:33 - deprecated_member_use
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\car_list_screen.dart:88:33 - unnecessary_underscores
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\car_list_screen.dart:159:31 - unnecessary_underscores
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\car_list_screen.dart:241:35 - deprecated_member_use
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\car_list_screen.dart:261:36 - unnecessary_underscores
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\car_list_screen.dart:268:36 - unnecessary_underscores
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\car_list_screen.dart:268:40 - unnecessary_underscores
+  error - Target of URI doesn't exist: '../../core/utils/date_utils.dart' - lib\presentation\screens\confirmation_screen.dart:6:8 - uri_does_not_exist
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\confirmation_screen.dart:130:55 - deprecated_member_use
+  error - Undefined name 'BookingDateUtils' - lib\presentation\screens\confirmation_screen.dart:227:42 - undefined_identifier
+  error - Undefined name 'BookingDateUtils' - lib\presentation\screens\confirmation_screen.dart:234:42 - undefined_identifier
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\confirmation_screen.dart:286:48 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\screens\confirmation_screen.dart:300:44 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\widgets\app_widgets.dart:20:32 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\widgets\app_widgets.dart:21:30 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\widgets\app_widgets.dart:25:34 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\widgets\app_widgets.dart:26:32 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\widgets\app_widgets.dart:188:40 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\widgets\app_widgets.dart:345:22 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\presentation\widgets\app_widgets.dart:347:41 - deprecated_member_use
+   info - The imported package 'bloc_test' isn't a dependency of the importing package - lib\test\blocs\booking_bloc_test.dart:3:8 - depend_on_referenced_packages
+   info - The imported package 'flutter_test' isn't a dependency of the importing package - lib\test\blocs\booking_bloc_test.dart:4:8 - depend_on_referenced_packages
+   info - The imported package 'mocktail' isn't a dependency of the importing package - lib\test\blocs\booking_bloc_test.dart:5:8 - depend_on_referenced_packages
+   info - The imported package 'bloc_test' isn't a dependency of the importing package - lib\test\blocs\car_list_bloc_test.dart:3:8 - depend_on_referenced_packages
+   info - The imported package 'flutter_test' isn't a dependency of the importing package - lib\test\blocs\car_list_bloc_test.dart:4:8 - depend_on_referenced_packages
+   info - The imported package 'mocktail' isn't a dependency of the importing package - lib\test\blocs\car_list_bloc_test.dart:5:8 - depend_on_referenced_packages
+   info - The imported package 'flutter_test' isn't a dependency of the importing package - lib\test\repositories\booking_repository_test.dart:3:8 - depend_on_referenced_packages
+   info - The imported package 'mocktail' isn't a dependency of the importing package - lib\test\repositories\booking_repository_test.dart:4:8 - depend_on_referenced_packages
+  error - Classes and mixins can only implement other classes and mixins - lib\test\repositories\booking_repository_test.dart:15:48 - implements_non_class
+  error - The getter 'isConnected' isn't defined for the type 'MockConnectivity' - lib\test\repositories\booking_repository_test.dart:111:35 - undefined_getter
+  error - The getter 'isConnected' isn't defined for the type 'MockConnectivity' - lib\test\repositories\booking_repository_test.dart:120:35 - undefined_getter
+  error - The getter 'isConnected' isn't defined for the type 'MockConnectivity' - lib\test\repositories\booking_repository_test.dart:140:35 - undefined_getter
+  error - The name 'MyApp' isn't a class - test\widget_test.dart:16:35 - creation_with_non_type
+
+78 issues found. (ran in 24.9s)

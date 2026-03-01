@@ -1,0 +1,222 @@
+Analyzing krentals...                                           
+
+  error - Undefined name 'BookingDateUtils' - lib\presentation\blocs\booking\booking_bloc.dart:210:18 - undefined_identifier
+  error - The method 'DateRange' isn't defined for the type 'BookingBloc' - lib\presentation\blocs\booking\booking_bloc.dart:354:21 - undefined_method
+  error - Undefined name 'BookingDateUtils' - lib\presentation\blocs\booking\booking_bloc.dart:357:9 - undefined_identifier
+  error - Target of URI doesn't exist: 'car_detail_screen.dart' - lib\presentation\screens\car_list_screen.dart:10:8 - uri_does_not_exist
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\car_list_screen.dart:88:33 - unnecessary_underscores
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\car_list_screen.dart:159:31 - unnecessary_underscores
+  error - The method 'CarDetailScreen' isn't defined for the type '_CarCard' - lib\presentation\screens\car_list_screen.dart:229:20 - undefined_method
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\car_list_screen.dart:261:36 - unnecessary_underscores
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\car_list_screen.dart:268:36 - unnecessary_underscores
+   info - Unnecessary use of multiple underscores - lib\presentation\screens\car_list_screen.dart:268:40 - unnecessary_underscores
+  error - Target of URI doesn't exist: '../../core/errors/failures.dart' - test\test\blocs\booking_bloc_test.dart:7:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../data/models/booking_model.dart' - test\test\blocs\booking_bloc_test.dart:8:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../data/models/car_model.dart' - test\test\blocs\booking_bloc_test.dart:9:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../data/repositories/car_repository.dart' - test\test\blocs\booking_bloc_test.dart:10:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../presentation/blocs/booking/booking_bloc.dart' - test\test\blocs\booking_bloc_test.dart:11:8 - uri_does_not_exist
+  error - Classes and mixins can only implement other classes and mixins - test\test\blocs\booking_bloc_test.dart:14:53 - implements_non_class
+  error - The name 'Car' isn't a class - test\test\blocs\booking_bloc_test.dart:19:25 - creation_with_non_type
+  error - The function 'Booking' isn't defined - test\test\blocs\booking_bloc_test.dart:40:23 - undefined_function
+  error - Undefined name 'BookingStatus' - test\test\blocs\booking_bloc_test.dart:50:13 - undefined_identifier
+  error - The name 'BookingBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:63:14 - non_type_as_type_argument
+  error - The name 'BookingState' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:63:27 - non_type_as_type_argument
+  error - The function 'BookingBloc' isn't defined - test\test\blocs\booking_bloc_test.dart:65:20 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:66:27 - unchecked_use_of_nullable_value
+  error - The function 'BookingCarSelected' isn't defined - test\test\blocs\booking_bloc_test.dart:66:31 - undefined_function
+  error - The name 'BookingDateSelection' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:68:13 - non_type_as_type_argument
+  error - The property 'car' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:69:30 - unchecked_use_of_nullable_value
+  error - The property 'canProceed' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:70:30 - unchecked_use_of_nullable_value
+  error - The name 'BookingBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:74:14 - non_type_as_type_argument
+  error - The name 'BookingState' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:74:27 - non_type_as_type_argument
+  error - The function 'BookingBloc' isn't defined - test\test\blocs\booking_bloc_test.dart:76:20 - undefined_function
+  error - The function 'BookingDateSelection' isn't defined - test\test\blocs\booking_bloc_test.dart:77:19 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:82:27 - unchecked_use_of_nullable_value
+  error - The function 'BookingStartDateSelected' isn't defined - test\test\blocs\booking_bloc_test.dart:82:31 - undefined_function
+  error - The name 'BookingDateSelection' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:84:13 - non_type_as_type_argument
+  error - The property 'startDate' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:85:30 - unchecked_use_of_nullable_value
+  error - The name 'BookingBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:89:14 - non_type_as_type_argument
+  error - The name 'BookingState' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:89:27 - non_type_as_type_argument
+  error - The function 'BookingBloc' isn't defined - test\test\blocs\booking_bloc_test.dart:91:20 - undefined_function
+  error - The function 'BookingDateSelection' isn't defined - test\test\blocs\booking_bloc_test.dart:92:19 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:93:27 - unchecked_use_of_nullable_value
+  error - The function 'BookingEndDateSelected' isn't defined - test\test\blocs\booking_bloc_test.dart:93:31 - undefined_function
+  error - The name 'BookingDateSelection' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:95:13 - non_type_as_type_argument
+  error - The property 'canProceed' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:96:30 - unchecked_use_of_nullable_value
+  error - The property 'totalDays' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:97:30 - unchecked_use_of_nullable_value
+  error - The property 'totalPrice' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:98:30 - unchecked_use_of_nullable_value
+  error - The property 'validationError' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:99:30 - unchecked_use_of_nullable_value
+  error - The name 'BookingBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:103:14 - non_type_as_type_argument
+  error - The name 'BookingState' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:103:27 - non_type_as_type_argument
+  error - The function 'BookingBloc' isn't defined - test\test\blocs\booking_bloc_test.dart:105:20 - undefined_function
+  error - The function 'BookingDateSelection' isn't defined - test\test\blocs\booking_bloc_test.dart:106:19 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:108:16 - unchecked_use_of_nullable_value
+  error - The function 'BookingEndDateSelected' isn't defined - test\test\blocs\booking_bloc_test.dart:108:20 - undefined_function
+  error - The name 'BookingDateSelection' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:110:13 - non_type_as_type_argument
+  error - The property 'canProceed' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:111:30 - unchecked_use_of_nullable_value
+  error - The property 'validationError' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:112:30 - unchecked_use_of_nullable_value
+  error - The name 'BookingBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:116:14 - non_type_as_type_argument
+  error - The name 'BookingState' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:116:27 - non_type_as_type_argument
+  error - The function 'BookingBloc' isn't defined - test\test\blocs\booking_bloc_test.dart:118:20 - undefined_function
+  error - The function 'Car' isn't defined - test\test\blocs\booking_bloc_test.dart:120:28 - undefined_function
+  error - The function 'BlockedDateRange' isn't defined - test\test\blocs\booking_bloc_test.dart:136:13 - undefined_function
+  error - The function 'BookingDateSelection' isn't defined - test\test\blocs\booking_bloc_test.dart:142:16 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:148:16 - unchecked_use_of_nullable_value
+  error - The function 'BookingEndDateSelected' isn't defined - test\test\blocs\booking_bloc_test.dart:148:20 - undefined_function
+  error - The name 'BookingDateSelection' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:150:13 - non_type_as_type_argument
+  error - The property 'canProceed' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:151:30 - unchecked_use_of_nullable_value
+  error - The property 'validationError' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:152:30 - unchecked_use_of_nullable_value
+  error - The name 'BookingBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:158:14 - non_type_as_type_argument
+  error - The name 'BookingState' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:158:27 - non_type_as_type_argument
+  error - The method 'createBooking' isn't defined for the type 'MockBookingRepository' - test\test\blocs\booking_bloc_test.dart:161:29 - undefined_method
+  error - The method 'processPayment' isn't defined for the type 'MockBookingRepository' - test\test\blocs\booking_bloc_test.dart:166:29 - undefined_method
+  error - Undefined name 'BookingStatus' - test\test\blocs\booking_bloc_test.dart:168:19 - undefined_identifier
+  error - The function 'BookingBloc' isn't defined - test\test\blocs\booking_bloc_test.dart:170:16 - undefined_function
+  error - The function 'BookingDateSelection' isn't defined - test\test\blocs\booking_bloc_test.dart:172:19 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:180:27 - unchecked_use_of_nullable_value
+  error - The name 'BookingPaymentInitiated' isn't a class - test\test\blocs\booking_bloc_test.dart:180:37 - creation_with_non_type
+  error - The name 'BookingPaymentInProgress' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:182:13 - non_type_as_type_argument
+  error - The name 'BookingConfirmed' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:183:13 - non_type_as_type_argument
+  error - The property 'booking' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:184:30 - unchecked_use_of_nullable_value
+  error - Undefined name 'BookingStatus' - test\test\blocs\booking_bloc_test.dart:184:59 - undefined_identifier
+  error - The name 'BookingBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:188:14 - non_type_as_type_argument
+  error - The name 'BookingState' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:188:27 - non_type_as_type_argument
+  error - The method 'createBooking' isn't defined for the type 'MockBookingRepository' - test\test\blocs\booking_bloc_test.dart:191:29 - undefined_method
+  error - The method 'processPayment' isn't defined for the type 'MockBookingRepository' - test\test\blocs\booking_bloc_test.dart:196:29 - undefined_method
+  error - The name 'PaymentFailure' isn't a class - test\test\blocs\booking_bloc_test.dart:197:30 - creation_with_non_type
+  error - The function 'BookingBloc' isn't defined - test\test\blocs\booking_bloc_test.dart:198:16 - undefined_function
+  error - The function 'BookingDateSelection' isn't defined - test\test\blocs\booking_bloc_test.dart:200:19 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:208:27 - unchecked_use_of_nullable_value
+  error - The name 'BookingPaymentInitiated' isn't a class - test\test\blocs\booking_bloc_test.dart:208:37 - creation_with_non_type
+  error - The name 'BookingPaymentInProgress' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:210:13 - non_type_as_type_argument
+  error - The name 'BookingPaymentFailed' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:211:13 - non_type_as_type_argument
+  error - The property 'booking' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:212:30 - unchecked_use_of_nullable_value
+  error - The property 'errorMessage' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:213:30 - unchecked_use_of_nullable_value
+  error - The name 'BookingBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:217:14 - non_type_as_type_argument
+  error - The name 'BookingState' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:217:27 - non_type_as_type_argument
+  error - The method 'createBooking' isn't defined for the type 'MockBookingRepository' - test\test\blocs\booking_bloc_test.dart:220:29 - undefined_method
+  error - The method 'processPayment' isn't defined for the type 'MockBookingRepository' - test\test\blocs\booking_bloc_test.dart:228:29 - undefined_method
+  error - Undefined name 'BookingStatus' - test\test\blocs\booking_bloc_test.dart:230:19 - undefined_identifier
+  error - The function 'BookingBloc' isn't defined - test\test\blocs\booking_bloc_test.dart:232:16 - undefined_function
+  error - The function 'BookingDateSelection' isn't defined - test\test\blocs\booking_bloc_test.dart:234:19 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:244:14 - unchecked_use_of_nullable_value
+  error - The name 'BookingPaymentInitiated' isn't a class - test\test\blocs\booking_bloc_test.dart:244:24 - creation_with_non_type
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:245:14 - unchecked_use_of_nullable_value
+  error - The name 'BookingPaymentInitiated' isn't a class - test\test\blocs\booking_bloc_test.dart:245:24 - creation_with_non_type
+  error - The method 'createBooking' isn't defined for the type 'MockBookingRepository' - test\test\blocs\booking_bloc_test.dart:249:31 - undefined_method
+  error - The name 'BookingBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:257:14 - non_type_as_type_argument
+  error - The name 'BookingState' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:257:27 - non_type_as_type_argument
+  error - The method 'createBooking' isn't defined for the type 'MockBookingRepository' - test\test\blocs\booking_bloc_test.dart:260:29 - undefined_method
+  error - The method 'processPayment' isn't defined for the type 'MockBookingRepository' - test\test\blocs\booking_bloc_test.dart:265:29 - undefined_method
+  error - The name 'NetworkFailure' isn't a class - test\test\blocs\booking_bloc_test.dart:266:30 - creation_with_non_type
+  error - The function 'BookingBloc' isn't defined - test\test\blocs\booking_bloc_test.dart:267:16 - undefined_function
+  error - The function 'BookingDateSelection' isn't defined - test\test\blocs\booking_bloc_test.dart:269:19 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:277:27 - unchecked_use_of_nullable_value
+  error - The name 'BookingPaymentInitiated' isn't a class - test\test\blocs\booking_bloc_test.dart:277:37 - creation_with_non_type
+  error - The name 'BookingPaymentInProgress' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:279:13 - non_type_as_type_argument
+  error - The name 'BookingPaymentFailed' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:280:13 - non_type_as_type_argument
+  error - The property 'isNetworkError' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:281:30 - unchecked_use_of_nullable_value
+  error - The property 'booking' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:282:30 - unchecked_use_of_nullable_value
+  error - The name 'BookingBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:286:14 - non_type_as_type_argument
+  error - The name 'BookingState' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:286:27 - non_type_as_type_argument
+  error - The method 'processPayment' isn't defined for the type 'MockBookingRepository' - test\test\blocs\booking_bloc_test.dart:289:29 - undefined_method
+  error - Undefined name 'BookingStatus' - test\test\blocs\booking_bloc_test.dart:291:19 - undefined_identifier
+  error - The function 'BookingBloc' isn't defined - test\test\blocs\booking_bloc_test.dart:293:16 - undefined_function
+  error - The function 'BookingPaymentFailed' isn't defined - test\test\blocs\booking_bloc_test.dart:295:19 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\booking_bloc_test.dart:299:27 - unchecked_use_of_nullable_value
+  error - The name 'BookingPaymentRetried' isn't a class - test\test\blocs\booking_bloc_test.dart:299:37 - creation_with_non_type
+  error - The name 'BookingPaymentInProgress' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:301:13 - non_type_as_type_argument
+  error - The name 'BookingConfirmed' isn't a type, so it can't be used as a type argument - test\test\blocs\booking_bloc_test.dart:302:13 - non_type_as_type_argument
+  error - Target of URI doesn't exist: '../../core/errors/failures.dart' - test\test\blocs\car_list_bloc_test.dart:7:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../data/models/car_model.dart' - test\test\blocs\car_list_bloc_test.dart:8:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../data/repositories/car_repository.dart' - test\test\blocs\car_list_bloc_test.dart:9:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../presentation/blocs/car_list/car_list_bloc.dart' - test\test\blocs\car_list_bloc_test.dart:10:8 - uri_does_not_exist
+  error - Classes and mixins can only implement other classes and mixins - test\test\blocs\car_list_bloc_test.dart:13:49 - implements_non_class
+  error - The name 'Car' isn't a class - test\test\blocs\car_list_bloc_test.dart:19:11 - creation_with_non_type
+  error - The name 'Car' isn't a class - test\test\blocs\car_list_bloc_test.dart:36:11 - creation_with_non_type
+  error - The name 'CarListBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:60:14 - non_type_as_type_argument
+  error - The name 'CarListState' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:60:27 - non_type_as_type_argument
+  error - The method 'getCars' isn't defined for the type 'MockCarRepository' - test\test\blocs\car_list_bloc_test.dart:63:29 - undefined_method
+  error - The function 'CarListBloc' isn't defined - test\test\blocs\car_list_bloc_test.dart:64:16 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\car_list_bloc_test.dart:66:27 - unchecked_use_of_nullable_value
+  error - The name 'CarListLoadRequested' isn't a class - test\test\blocs\car_list_bloc_test.dart:66:37 - creation_with_non_type
+  error - The name 'CarListLoading' isn't a class - test\test\blocs\car_list_bloc_test.dart:68:15 - creation_with_non_type
+  error - The name 'CarListLoaded' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:69:13 - non_type_as_type_argument
+  error - The property 'cars' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\car_list_bloc_test.dart:70:30 - unchecked_use_of_nullable_value
+  error - The property 'filteredCars' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\car_list_bloc_test.dart:71:30 - unchecked_use_of_nullable_value
+  error - The name 'CarListBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:75:14 - non_type_as_type_argument
+  error - The name 'CarListState' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:75:27 - non_type_as_type_argument
+  error - The method 'getCars' isn't defined for the type 'MockCarRepository' - test\test\blocs\car_list_bloc_test.dart:78:29 - undefined_method
+  error - The function 'CarListBloc' isn't defined - test\test\blocs\car_list_bloc_test.dart:79:16 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\car_list_bloc_test.dart:81:27 - unchecked_use_of_nullable_value
+  error - The name 'CarListLoadRequested' isn't a class - test\test\blocs\car_list_bloc_test.dart:81:37 - creation_with_non_type
+  error - The name 'CarListLoading' isn't a class - test\test\blocs\car_list_bloc_test.dart:83:15 - creation_with_non_type
+  error - The name 'CarListEmpty' isn't a class - test\test\blocs\car_list_bloc_test.dart:84:15 - creation_with_non_type
+  error - The name 'CarListBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:88:14 - non_type_as_type_argument
+  error - The name 'CarListState' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:88:27 - non_type_as_type_argument
+  error - The method 'getCars' isn't defined for the type 'MockCarRepository' - test\test\blocs\car_list_bloc_test.dart:91:29 - undefined_method
+  error - The name 'NetworkFailure' isn't a class - test\test\blocs\car_list_bloc_test.dart:91:56 - creation_with_non_type
+  error - The function 'CarListBloc' isn't defined - test\test\blocs\car_list_bloc_test.dart:92:16 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\car_list_bloc_test.dart:94:27 - unchecked_use_of_nullable_value
+  error - The name 'CarListLoadRequested' isn't a class - test\test\blocs\car_list_bloc_test.dart:94:37 - creation_with_non_type
+  error - The name 'CarListLoading' isn't a class - test\test\blocs\car_list_bloc_test.dart:96:15 - creation_with_non_type
+  error - The name 'CarListError' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:97:13 - non_type_as_type_argument
+  error - The property 'isNetworkError' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\car_list_bloc_test.dart:98:30 - unchecked_use_of_nullable_value
+  error - The name 'CarListBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:102:14 - non_type_as_type_argument
+  error - The name 'CarListState' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:102:27 - non_type_as_type_argument
+  error - The method 'getCars' isn't defined for the type 'MockCarRepository' - test\test\blocs\car_list_bloc_test.dart:105:29 - undefined_method
+  error - The name 'ServerFailure' isn't a class - test\test\blocs\car_list_bloc_test.dart:106:30 - creation_with_non_type
+  error - The function 'CarListBloc' isn't defined - test\test\blocs\car_list_bloc_test.dart:107:16 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\car_list_bloc_test.dart:109:27 - unchecked_use_of_nullable_value
+  error - The name 'CarListLoadRequested' isn't a class - test\test\blocs\car_list_bloc_test.dart:109:37 - creation_with_non_type
+  error - The name 'CarListLoading' isn't a class - test\test\blocs\car_list_bloc_test.dart:111:15 - creation_with_non_type
+  error - The name 'CarListError' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:112:13 - non_type_as_type_argument
+  error - The property 'isNetworkError' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\car_list_bloc_test.dart:113:30 - unchecked_use_of_nullable_value
+  error - The name 'CarListBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:117:14 - non_type_as_type_argument
+  error - The name 'CarListState' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:117:27 - non_type_as_type_argument
+  error - The method 'getCars' isn't defined for the type 'MockCarRepository' - test\test\blocs\car_list_bloc_test.dart:120:29 - undefined_method
+  error - The function 'CarListBloc' isn't defined - test\test\blocs\car_list_bloc_test.dart:121:16 - undefined_function
+  error - The function 'CarListLoaded' isn't defined - test\test\blocs\car_list_bloc_test.dart:123:19 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\car_list_bloc_test.dart:128:16 - unchecked_use_of_nullable_value
+  error - The name 'CarListFilterChanged' isn't a class - test\test\blocs\car_list_bloc_test.dart:128:26 - creation_with_non_type
+  error - The name 'CarListLoaded' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:130:13 - non_type_as_type_argument
+  error - The property 'filteredCars' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\car_list_bloc_test.dart:131:30 - unchecked_use_of_nullable_value
+  error - The property 'filteredCars' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\car_list_bloc_test.dart:133:26 - unchecked_use_of_nullable_value
+  error - The name 'CarListBloc' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:137:14 - non_type_as_type_argument
+  error - The name 'CarListState' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:137:27 - non_type_as_type_argument
+  error - The method 'getCars' isn't defined for the type 'MockCarRepository' - test\test\blocs\car_list_bloc_test.dart:140:29 - undefined_method
+  error - The function 'CarListBloc' isn't defined - test\test\blocs\car_list_bloc_test.dart:141:16 - undefined_function
+  error - The function 'CarListLoaded' isn't defined - test\test\blocs\car_list_bloc_test.dart:143:19 - undefined_function
+  error - The method 'add' can't be unconditionally invoked because the receiver can be 'null' - test\test\blocs\car_list_bloc_test.dart:144:27 - unchecked_use_of_nullable_value
+  error - The name 'CarListRefreshRequested' isn't a class - test\test\blocs\car_list_bloc_test.dart:144:37 - creation_with_non_type
+  error - The name 'CarListRefreshing' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:146:13 - non_type_as_type_argument
+  error - The property 'currentCars' can't be unconditionally accessed because the receiver can be 'null' - test\test\blocs\car_list_bloc_test.dart:147:30 - unchecked_use_of_nullable_value
+  error - The name 'CarListLoaded' isn't a type, so it can't be used as a type argument - test\test\blocs\car_list_bloc_test.dart:148:13 - non_type_as_type_argument
+  error - Target of URI doesn't exist: '../../core/errors/failures.dart' - test\test\repositories\booking_repository_test.dart:7:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../data/models/booking_model.dart' - test\test\repositories\booking_repository_test.dart:8:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../data/models/car_model.dart' - test\test\repositories\booking_repository_test.dart:9:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../data/repositories/car_repository.dart' - test\test\repositories\booking_repository_test.dart:10:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../data/sources/mock_car_data_source.dart' - test\test\repositories\booking_repository_test.dart:11:8 - uri_does_not_exist
+  error - Classes and mixins can only implement other classes and mixins - test\test\repositories\booking_repository_test.dart:14:46 - implements_non_class
+  error - Classes and mixins can only implement other classes and mixins - test\test\repositories\booking_repository_test.dart:15:48 - implements_non_class
+  error - Undefined class 'BookingRepositoryImpl' - test\test\repositories\booking_repository_test.dart:20:8 - undefined_class
+  error - The name 'Car' isn't a class - test\test\repositories\booking_repository_test.dart:22:25 - creation_with_non_type
+  error - The function 'BookingRepositoryImpl' isn't defined - test\test\repositories\booking_repository_test.dart:43:18 - undefined_function
+  error - Undefined name 'BookingStatus' - test\test\repositories\booking_repository_test.dart:63:30 - undefined_identifier
+  error - The name 'ValidationFailure' isn't a type, so it can't be used as a type argument - test\test\repositories\booking_repository_test.dart:77:21 - non_type_as_type_argument
+  error - The name 'ValidationFailure' isn't a type, so it can't be used as a type argument - test\test\repositories\booking_repository_test.dart:90:21 - non_type_as_type_argument
+  error - The function 'Booking' isn't defined - test\test\repositories\booking_repository_test.dart:96:25 - undefined_function
+  error - Undefined name 'BookingStatus' - test\test\repositories\booking_repository_test.dart:106:15 - undefined_identifier
+  error - The getter 'isConnected' isn't defined for the type 'MockConnectivity' - test\test\repositories\booking_repository_test.dart:111:35 - undefined_getter
+  error - The name 'NetworkFailure' isn't a type, so it can't be used as a type argument - test\test\repositories\booking_repository_test.dart:115:21 - non_type_as_type_argument
+  error - The getter 'isConnected' isn't defined for the type 'MockConnectivity' - test\test\repositories\booking_repository_test.dart:120:35 - undefined_getter
+  error - The method 'processPayment' isn't defined for the type 'MockDataSource' - test\test\repositories\booking_repository_test.dart:121:33 - undefined_method
+  error - The function 'PaymentResult' isn't defined - test\test\repositories\booking_repository_test.dart:127:34 - undefined_function
+  error - Undefined name 'BookingStatus' - test\test\repositories\booking_repository_test.dart:136:29 - undefined_identifier
+  error - The getter 'isConnected' isn't defined for the type 'MockConnectivity' - test\test\repositories\booking_repository_test.dart:140:35 - undefined_getter
+  error - The method 'processPayment' isn't defined for the type 'MockDataSource' - test\test\repositories\booking_repository_test.dart:141:33 - undefined_method
+  error - The name 'PaymentException' isn't a class - test\test\repositories\booking_repository_test.dart:147:26 - creation_with_non_type
+  error - The name 'PaymentFailure' isn't a type, so it can't be used as a type argument - test\test\repositories\booking_repository_test.dart:154:21 - non_type_as_type_argument
+  error - The name 'MyApp' isn't a class - test\widget_test.dart:16:35 - creation_with_non_type
+
+218 issues found. (ran in 6.6s)
