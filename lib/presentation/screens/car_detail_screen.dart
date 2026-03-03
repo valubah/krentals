@@ -24,6 +24,21 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
   bool _descriptionExpanded = false;
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Precache all images for this car for smoother carousel
+    for (final url in widget.car.imageUrls) {
+      precacheImage(AssetImage(url), context);
+    }
+  }
+
+  String _getAngleLabel(int index) {
+    const labels = ['Front Exterior', 'Interior Cockpit', 'Rear View'];
+    if (index < labels.length) return labels[index];
+    return 'Detailed View';
+  }
+
+  @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
@@ -77,17 +92,9 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                             return Stack(
                               children: [
                                 SizedBox.expand(
-                                  child: Image.asset(
-                                    car.imageUrls[i],
+                                  child: AppImage(
+                                    path: car.imageUrls[i],
                                     fit: BoxFit.cover,
-                                    errorBuilder: (_, _, _) => Container(
-                                      color: Colors.grey.shade100,
-                                      child: const Icon(
-                                        Icons.directions_car_rounded,
-                                        size: 100,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
                                   ),
                                 ),
                                 // Gradient overlay
@@ -404,19 +411,6 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
         ),
       ),
     );
-  }
-
-  String _getAngleLabel(int index) {
-    switch (index) {
-      case 0:
-        return 'FRONT';
-      case 1:
-        return 'SIDE';
-      case 2:
-        return 'INTERIOR';
-      default:
-        return 'REAR';
-    }
   }
 }
 

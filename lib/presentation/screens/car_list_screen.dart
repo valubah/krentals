@@ -349,18 +349,10 @@ class _CarCard extends StatelessWidget {
                 ),
                 child: AspectRatio(
                   aspectRatio: 16 / 9,
-                  child: Image.asset(
-                    car.imageUrls.first,
+                  child: AppImage(
+                    path: car.imageUrls.first,
                     width: double.infinity,
                     fit: BoxFit.cover,
-                    errorBuilder: (_, _, _) => Container(
-                      color: Colors.grey.shade100,
-                      child: Icon(
-                        Icons.directions_car_rounded,
-                        size: 60,
-                        color: Colors.grey.shade300,
-                      ),
-                    ),
                   ),
                 ),
               ),

@@ -343,3 +343,68 @@ class StatusBadge extends StatelessWidget {
     );
   }
 }
+
+// --- App Image with Loading & Error States ---
+class AppImage extends StatelessWidget {
+  final String path;
+  final BoxFit fit;
+  final double? width;
+  final double? height;
+
+  const AppImage({
+    super.key,
+    required this.path,
+    this.fit = BoxFit.cover,
+    this.width,
+    this.height,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      path,
+      width: width,
+      height: height,
+      fit: fit,
+      frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+        if (wasSynchronouslyLoaded) return child;
+        return AnimatedSwitcher(
+          duration: const Duration(milliseconds: 300),
+          child: frame != null
+              ? child
+              : Shimmer.fromColors(
+                  baseColor: Colors.grey.shade200,
+                  highlightColor: Colors.grey.shade50,
+                  child: Container(
+                    width: width ?? double.infinity,
+                    height: height ?? double.infinity,
+                    color: Colors.white,
+                  ),
+                ),
+        );
+      },
+      errorBuilder: (context, error, stackTrace) {
+        return Container(
+          width: width,
+          height: height,
+          color: Colors.grey.shade100,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.image_not_supported_outlined,
+                color: Colors.grey.shade400,
+                size: 32,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Failed to load',
+                style: TextStyle(color: Colors.grey.shade500, fontSize: 10),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
