@@ -52,165 +52,161 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
 
     return Scaffold(
       backgroundColor: AppTheme.surface,
-      body: Center(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxWidth: isDesktop ? 1000 : double.infinity,
-          ),
-          child: CustomScrollView(
-            slivers: [
-              // ── Image Carousel App Bar ──────────────────────────────────────
-              SliverAppBar(
-                expandedHeight: isDesktop ? 500 : 300,
-                pinned: true,
-                backgroundColor: AppTheme.cardBg,
-                leading: GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: Container(
-                    margin: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.black.withValues(alpha: 0.4),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.arrow_back_ios_new_rounded,
-                      color: Colors.white,
-                      size: 18,
-                    ),
-                  ),
+      body: CustomScrollView(
+        slivers: [
+          // ── Image Carousel App Bar ──────────────────────────────────────
+          SliverAppBar(
+            expandedHeight: isDesktop ? 500 : 300,
+            pinned: true,
+            backgroundColor: AppTheme.cardBg,
+            leading: GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: Container(
+                margin: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.black.withValues(alpha: 0.4),
+                  shape: BoxShape.circle,
                 ),
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Stack(
-                    children: [
-                      Hero(
-                        tag: 'car_${car.id}',
-                        child: PageView.builder(
-                          controller: _pageController,
-                          scrollBehavior: AppScrollBehavior(),
-                          itemCount: car.imageUrls.length,
-                          itemBuilder: (context, i) {
-                            return Stack(
-                              children: [
-                                SizedBox.expand(
-                                  child: AppImage(
-                                    path: car.imageUrls[i],
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                // Gradient overlay
-                                Positioned.fill(
-                                  child: DecoratedBox(
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        begin: Alignment.bottomCenter,
-                                        end: Alignment.topCenter,
-                                        colors: [
-                                          Colors.black.withValues(alpha: 0.4),
-                                          Colors.transparent,
-                                          Colors.black.withValues(alpha: 0.1),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                // Angle Label Badge (Turo-style)
-                                Positioned(
-                                  bottom: 24,
-                                  left: 20,
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 12,
-                                      vertical: 6,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.black.withValues(
-                                        alpha: 0.4,
-                                      ),
-                                      borderRadius: BorderRadius.circular(20),
-                                      border: Border.all(
-                                        color: Colors.white.withValues(
-                                          alpha: 0.2,
-                                        ),
-                                      ),
-                                    ),
-                                    child: Text(
-                                      _getAngleLabel(i),
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                        letterSpacing: 0.8,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                        ),
-                      ),
-                      // Page indicator
-                      Positioned(
-                        bottom: 24,
-                        left: 0,
-                        right: 0,
-                        child: Center(
-                          child: SmoothPageIndicator(
-                            controller: _pageController,
-                            count: car.imageUrls.length,
-                            effect: WormEffect(
-                              dotWidth: 8,
-                              dotHeight: 8,
-                              activeDotColor: Colors.white,
-                              dotColor: Colors.white.withValues(alpha: 0.4),
-                            ),
-                          ),
-                        ),
-                      ),
-                      // Photo count badge
-                      Positioned(
-                        top: MediaQuery.of(context).padding.top + 8,
-                        right: 16,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 6,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.black.withValues(alpha: 0.4),
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: Colors.white.withValues(alpha: 0.2),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.photo_library_rounded,
-                                color: Colors.white,
-                                size: 14,
-                              ),
-                              const SizedBox(width: 6),
-                              Text(
-                                '${car.imageUrls.length} photos',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                child: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  color: Colors.white,
+                  size: 18,
                 ),
               ),
+            ),
+            flexibleSpace: FlexibleSpaceBar(
+              background: Hero(
+                tag: 'car_${car.id}',
+                child: Stack(
+                  children: [
+                    PageView.builder(
+                      controller: _pageController,
+                      scrollBehavior: AppScrollBehavior(),
+                      itemCount: car.imageUrls.length,
+                      itemBuilder: (context, i) {
+                        return Stack(
+                          children: [
+                            SizedBox.expand(
+                              child: AppImage(
+                                path: car.imageUrls[i],
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            // Gradient overlay
+                            Positioned.fill(
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment.bottomCenter,
+                                    end: Alignment.topCenter,
+                                    colors: [
+                                      Colors.black.withValues(alpha: 0.4),
+                                      Colors.transparent,
+                                      Colors.black.withValues(alpha: 0.1),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            // Angle Label Badge
+                            Positioned(
+                              bottom: 24,
+                              left: 20,
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 6,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withValues(alpha: 0.4),
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                    color: Colors.white.withValues(alpha: 0.2),
+                                  ),
+                                ),
+                                child: Text(
+                                  _getAngleLabel(i),
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                    letterSpacing: 0.8,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                    // Page indicator
+                    Positioned(
+                      bottom: 24,
+                      left: 0,
+                      right: 0,
+                      child: Center(
+                        child: SmoothPageIndicator(
+                          controller: _pageController,
+                          count: car.imageUrls.length,
+                          effect: WormEffect(
+                            dotWidth: 8,
+                            dotHeight: 8,
+                            activeDotColor: Colors.white,
+                            dotColor: Colors.white.withValues(alpha: 0.4),
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Photo count badge
+                    Positioned(
+                      top: MediaQuery.of(context).padding.top + 8,
+                      right: 16,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.black.withValues(alpha: 0.4),
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: Colors.white.withValues(alpha: 0.2),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              Icons.photo_library_rounded,
+                              color: Colors.white,
+                              size: 14,
+                            ),
+                            const SizedBox(width: 6),
+                            Text(
+                              '${car.imageUrls.length} photos',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
 
-              // ── Content ──────────────────────────────────────────────────────
-              SliverToBoxAdapter(
+          // ── Centered Content Area ────────────────────────────────────────
+          SliverToBoxAdapter(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: isDesktop ? 1000 : double.infinity,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(24),
                   child: Column(
@@ -396,9 +392,9 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                   ),
                 ),
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
 
       // ── Book Button ────────────────────────────────────────────────────
