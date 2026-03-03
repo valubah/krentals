@@ -47,266 +47,239 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
     final car = widget.car;
     final size = MediaQuery.of(context).size;
     final isDesktop = size.width > 900;
-    final topPadding = MediaQuery.of(context).padding.top;
 
     return Scaffold(
       backgroundColor: AppTheme.surface,
-      body: Stack(
-        children: [
-          CustomScrollView(
-            physics: const BouncingScrollPhysics(),
-            slivers: [
-              // ── Modern Image Carousel ────────────────────────────────────
-              SliverAppBar(
-                expandedHeight: isDesktop ? 600 : 380,
-                pinned: true,
-                stretch: true,
-                backgroundColor: AppTheme.cardBg,
-                automaticallyImplyLeading: false,
-                flexibleSpace: FlexibleSpaceBar(
-                  stretchModes: const [
-                    StretchMode.zoomBackground,
-                    StretchMode.blurBackground,
-                  ],
-                  background: Stack(
+      body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          // ── Image Carousel App Bar ────────────────────────────────────
+          SliverAppBar(
+            expandedHeight: isDesktop ? 600 : 380,
+            pinned: true,
+            stretch: true,
+            backgroundColor: AppTheme.cardBg,
+            leading: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: _CircleButton(
+                icon: Icons.arrow_back_ios_new_rounded,
+                onTap: () => Navigator.pop(context),
+              ),
+            ),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: _CircleButton(icon: Icons.share_outlined, onTap: () {}),
+              ),
+            ],
+            flexibleSpace: FlexibleSpaceBar(
+              stretchModes: const [StretchMode.zoomBackground],
+              background: Stack(
+                fit: StackFit.expand,
+                children: [
+                  PageView.builder(
+                    controller: _pageController,
+                    scrollBehavior: AppScrollBehavior(),
+                    itemCount: car.imageUrls.length,
+                    itemBuilder: (context, i) {
+                      return Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          AppImage(path: car.imageUrls[i], fit: BoxFit.cover),
+                          // Subtle bottom gradient
+                          DecoratedBox(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Colors.black.withOpacity(0.1),
+                                  Colors.transparent,
+                                  Colors.black.withOpacity(0.4),
+                                ],
+                                stops: const [0.0, 0.4, 1.0],
+                              ),
+                            ),
+                          ),
+                          // Angle Label Badge
+                          Positioned(
+                            bottom: 40,
+                            left: 20,
+                            child: _GlassBadge(text: _getAngleLabel(i)),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                  // Custom Indicators
+                  Positioned(
+                    bottom: 44,
+                    right: 20,
+                    child: SmoothPageIndicator(
+                      controller: _pageController,
+                      count: car.imageUrls.length,
+                      effect: ExpandingDotsEffect(
+                        dotWidth: 8,
+                        dotHeight: 8,
+                        activeDotColor: Colors.white,
+                        dotColor: Colors.white.withOpacity(0.4),
+                        expansionFactor: 3,
+                        spacing: 6,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          // ── Main Content Body ────────────────────────────────────────
+          SliverToBoxAdapter(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: isDesktop ? 1000 : double.infinity,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 32,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Positioned.fill(
-                        child: PageView.builder(
-                          controller: _pageController,
-                          scrollBehavior: AppScrollBehavior(),
-                          itemCount: car.imageUrls.length,
-                          itemBuilder: (context, i) {
-                            return Stack(
-                              fit: StackFit.expand,
+                      // Car Identity
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                AppImage(
-                                  path: car.imageUrls[i],
-                                  fit: BoxFit.cover,
+                                Text(
+                                  car.name,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displaySmall
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.w800,
+                                        letterSpacing: -1,
+                                      ),
                                 ),
-                                // Subtle bottom gradient
-                                DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        Colors.black.withValues(alpha: 0.1),
-                                        Colors.transparent,
-                                        Colors.black.withValues(alpha: 0.4),
-                                      ],
-                                      stops: const [0.0, 0.4, 1.0],
-                                    ),
-                                  ),
-                                ),
-                                // Angle Label Badge
-                                Positioned(
-                                  bottom: 40,
-                                  left: 20,
-                                  child: _GlassBadge(text: _getAngleLabel(i)),
+                                const SizedBox(height: 4),
+                                Text(
+                                  '${car.brand} • ${car.category}',
+                                  style: Theme.of(context).textTheme.bodyLarge
+                                      ?.copyWith(
+                                        color: AppTheme.textSecondary,
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                 ),
                               ],
-                            );
-                          },
-                        ),
-                      ),
-                      // Custom Indicators
-                      Positioned(
-                        bottom: 44,
-                        right: 20,
-                        child: SmoothPageIndicator(
-                          controller: _pageController,
-                          count: car.imageUrls.length,
-                          effect: ExpandingDotsEffect(
-                            dotWidth: 8,
-                            dotHeight: 8,
-                            activeDotColor: Colors.white,
-                            dotColor: Colors.white.withValues(alpha: 0.4),
-                            expansionFactor: 3,
-                            spacing: 6,
+                            ),
                           ),
+                          _RatingBadge(
+                            rating: car.rating,
+                            count: car.reviewCount,
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 32),
+                      const Divider(color: AppTheme.divider),
+                      const SizedBox(height: 32),
+
+                      // Specs Grid
+                      _SpecsGrid(car: car),
+
+                      const SizedBox(height: 40),
+
+                      // Hosted By Section
+                      const _HostedBySection(),
+
+                      const SizedBox(height: 40),
+
+                      // Description
+                      const SectionHeader(title: 'DESCRIPTION'),
+                      const SizedBox(height: 12),
+                      AnimatedCrossFade(
+                        duration: const Duration(milliseconds: 300),
+                        crossFadeState: _descriptionExpanded
+                            ? CrossFadeState.showSecond
+                            : CrossFadeState.showFirst,
+                        firstChild: Text(
+                          car.description,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodyLarge?.copyWith(height: 1.6),
+                          maxLines: 4,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        secondChild: Text(
+                          car.description,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodyLarge?.copyWith(height: 1.6),
                         ),
                       ),
+                      TextButton(
+                        onPressed: () => setState(
+                          () => _descriptionExpanded = !_descriptionExpanded,
+                        ),
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                          foregroundColor: AppTheme.accent,
+                        ),
+                        child: Text(
+                          _descriptionExpanded ? 'Read less' : 'Read more',
+                          style: const TextStyle(fontWeight: FontWeight.w700),
+                        ),
+                      ),
+
+                      const SizedBox(height: 40),
+
+                      // Features
+                      const SectionHeader(title: 'FEATURES'),
+                      const SizedBox(height: 20),
+                      Wrap(
+                        spacing: 12,
+                        runSpacing: 12,
+                        children: car.features
+                            .map((f) => _FeatureTile(feature: f))
+                            .toList(),
+                      ),
+
+                      const SizedBox(height: 40),
+
+                      // Location
+                      const SectionHeader(title: 'LOCATION'),
+                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.location_on_rounded,
+                            color: AppTheme.accent,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            car.location,
+                            style: Theme.of(context).textTheme.bodyLarge
+                                ?.copyWith(fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 120), // Whitespace for bottom bar
                     ],
                   ),
                 ),
               ),
-
-              // ── Main Content Body ────────────────────────────────────────
-              SliverToBoxAdapter(
-                child: Center(
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxWidth: isDesktop ? 1000 : double.infinity,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 32,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Car Identity
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      car.name,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displaySmall
-                                          ?.copyWith(
-                                            fontWeight: FontWeight.w800,
-                                            letterSpacing: -1,
-                                          ),
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      '${car.brand} • ${car.category}',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyLarge
-                                          ?.copyWith(
-                                            color: AppTheme.textSecondary,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              _RatingBadge(
-                                rating: car.rating,
-                                count: car.reviewCount,
-                              ),
-                            ],
-                          ),
-
-                          const SizedBox(height: 32),
-                          const Divider(color: AppTheme.divider),
-                          const SizedBox(height: 32),
-
-                          // Specs Grid
-                          _SpecsGrid(car: car),
-
-                          const SizedBox(height: 40),
-
-                          // Hosted By Section
-                          const _HostedBySection(),
-
-                          const SizedBox(height: 40),
-
-                          // Description
-                          const SectionHeader(title: 'DESCRIPTION'),
-                          const SizedBox(height: 12),
-                          AnimatedCrossFade(
-                            duration: const Duration(milliseconds: 300),
-                            crossFadeState: _descriptionExpanded
-                                ? CrossFadeState.showSecond
-                                : CrossFadeState.showFirst,
-                            firstChild: Text(
-                              car.description,
-                              style: Theme.of(
-                                context,
-                              ).textTheme.bodyLarge?.copyWith(height: 1.6),
-                              maxLines: 4,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            secondChild: Text(
-                              car.description,
-                              style: Theme.of(
-                                context,
-                              ).textTheme.bodyLarge?.copyWith(height: 1.6),
-                            ),
-                          ),
-                          TextButton(
-                            onPressed: () => setState(
-                              () =>
-                                  _descriptionExpanded = !_descriptionExpanded,
-                            ),
-                            style: TextButton.styleFrom(
-                              padding: EdgeInsets.zero,
-                              foregroundColor: AppTheme.accent,
-                            ),
-                            child: Text(
-                              _descriptionExpanded ? 'Read less' : 'Read more',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-
-                          const SizedBox(height: 40),
-
-                          // Features
-                          const SectionHeader(title: 'FEATURES'),
-                          const SizedBox(height: 20),
-                          Wrap(
-                            spacing: 12,
-                            runSpacing: 12,
-                            children: car.features
-                                .map((f) => _FeatureTile(feature: f))
-                                .toList(),
-                          ),
-
-                          const SizedBox(height: 40),
-
-                          // Location
-                          const SectionHeader(title: 'LOCATION'),
-                          const SizedBox(height: 12),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.location_on_rounded,
-                                color: AppTheme.accent,
-                                size: 20,
-                              ),
-                              const SizedBox(width: 8),
-                              Text(
-                                car.location,
-                                style: Theme.of(context).textTheme.bodyLarge
-                                    ?.copyWith(fontWeight: FontWeight.w600),
-                              ),
-                            ],
-                          ),
-
-                          const SizedBox(
-                            height: 120,
-                          ), // Whitespace for bottom bar
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-
-          // ── Sticky Header UI ────────────────────────────────────────────
-          Positioned(
-            top: topPadding + 12,
-            left: 16,
-            child: _CircleButton(
-              icon: Icons.arrow_back_ios_new_rounded,
-              onTap: () => Navigator.pop(context),
             ),
-          ),
-          Positioned(
-            top: topPadding + 12,
-            right: 16,
-            child: _CircleButton(icon: Icons.share_outlined, onTap: () {}),
-          ),
-
-          // ── Bottom Booking Bar ──────────────────────────────────────────
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: _BottomBookingBar(car: car),
           ),
         ],
       ),
+      bottomNavigationBar: _BottomBookingBar(car: car),
     );
   }
 }
@@ -320,9 +293,9 @@ class _GlassBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.5),
+        color: Colors.black.withOpacity(0.5),
         borderRadius: BorderRadius.circular(30),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
+        border: Border.all(color: Colors.white.withOpacity(0.1)),
       ),
       child: Text(
         text,
@@ -423,7 +396,7 @@ class _SpecTile extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: AppTheme.accent.withValues(alpha: 0.08),
+            color: AppTheme.accent.withOpacity(0.08),
             shape: BoxShape.circle,
           ),
           child: Icon(icon, color: AppTheme.accent, size: 20),
@@ -469,7 +442,7 @@ class _HostedBySection extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 28,
-            backgroundColor: AppTheme.accent.withValues(alpha: 0.1),
+            backgroundColor: AppTheme.accent.withOpacity(0.1),
             child: const Icon(
               Icons.directions_car_rounded,
               color: AppTheme.accent,
@@ -545,13 +518,10 @@ class _CircleButton extends StatelessWidget {
         width: 44,
         height: 44,
         decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.9),
+          color: Colors.white.withOpacity(0.9),
           shape: BoxShape.circle,
           boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.1),
-              blurRadius: 8,
-            ),
+            BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 8),
           ],
         ),
         child: Icon(icon, color: Colors.black, size: 20),
@@ -580,7 +550,7 @@ class _BottomBookingBar extends StatelessWidget {
         border: const Border(top: BorderSide(color: AppTheme.divider)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
+            color: Colors.black.withOpacity(0.05),
             blurRadius: 20,
             offset: const Offset(0, -5),
           ),

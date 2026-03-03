@@ -16,13 +16,13 @@ class AvailabilityBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
         color: isAvailable
-            ? AppTheme.success.withValues(alpha: 0.12)
-            : AppTheme.error.withValues(alpha: 0.12),
+            ? AppTheme.success.withOpacity(0.12)
+            : AppTheme.error.withOpacity(0.12),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: isAvailable
-              ? AppTheme.success.withValues(alpha: 0.4)
-              : AppTheme.error.withValues(alpha: 0.4),
+              ? AppTheme.success.withOpacity(0.4)
+              : AppTheme.error.withOpacity(0.4),
         ),
       ),
       child: Row(
@@ -173,7 +173,7 @@ class EmptyState extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: AppTheme.accent.withValues(alpha: 0.08),
+                color: AppTheme.accent.withOpacity(0.08),
                 shape: BoxShape.circle,
               ),
               child: Icon(icon, size: 48, color: AppTheme.accent),
@@ -327,9 +327,9 @@ class StatusBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.12),
+        color: color.withOpacity(0.12),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: color.withValues(alpha: 0.4)),
+        border: Border.all(color: color.withOpacity(0.4)),
       ),
       child: Text(
         label,

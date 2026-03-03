@@ -127,7 +127,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
                               border: Border.all(color: AppTheme.divider),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withValues(alpha: 0.04),
+                                  color: Colors.black.withOpacity(0.04),
                                   blurRadius: 16,
                                   offset: const Offset(0, 4),
                                 ),
@@ -289,7 +289,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
                           child: Container(
                             padding: const EdgeInsets.all(14),
                             decoration: BoxDecoration(
-                              color: AppTheme.primary.withValues(alpha: 0.04),
+                              color: AppTheme.primary.withOpacity(0.04),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Row(
@@ -305,9 +305,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
                                     'Show this booking ID at pick-up. Keep it safe!',
                                     style: TextStyle(
                                       fontSize: 13,
-                                      color: AppTheme.primary.withValues(
-                                        alpha: 0.8,
-                                      ),
+                                      color: AppTheme.primary.withOpacity(0.8),
                                     ),
                                   ),
                                 ),
