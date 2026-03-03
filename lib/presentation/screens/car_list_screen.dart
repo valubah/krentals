@@ -246,7 +246,7 @@ class _CarGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (cars.isEmpty) {
-      return SliverFillRemaining(
+      return const SliverFillRemaining(
         child: EmptyState(
           icon: Icons.filter_list_off_rounded,
           title: 'No matches',
@@ -255,58 +255,54 @@ class _CarGrid extends StatelessWidget {
       );
     }
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final width = constraints.maxWidth;
-        final isDesktop = width > 900;
-        final isTablet = width > 600 && width <= 900;
+    final width = MediaQuery.of(context).size.width;
+    final isDesktop = width > 900;
+    final isTablet = width > 600 && width <= 900;
 
-        if (isDesktop) {
-          return SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
-            sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 450,
-                mainAxisSpacing: 32,
-                crossAxisSpacing: 32,
-                childAspectRatio: 0.9,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (context, i) => _CarCard(car: cars[i]),
-                childCount: cars.length,
-              ),
-            ),
-          );
-        }
-
-        if (isTablet) {
-          return SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-            sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
-                childAspectRatio: 1.0,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (context, i) => _CarCard(car: cars[i]),
-                childCount: cars.length,
-              ),
-            ),
-          );
-        }
-
-        return SliverPadding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          sliver: SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, i) => _CarCard(car: cars[i]),
-              childCount: cars.length,
-            ),
+    if (isDesktop) {
+      return SliverPadding(
+        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
+        sliver: SliverGrid(
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 450,
+            mainAxisSpacing: 32,
+            crossAxisSpacing: 32,
+            childAspectRatio: 0.9,
           ),
-        );
-      },
+          delegate: SliverChildBuilderDelegate(
+            (context, i) => _CarCard(car: cars[i]),
+            childCount: cars.length,
+          ),
+        ),
+      );
+    }
+
+    if (isTablet) {
+      return SliverPadding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        sliver: SliverGrid(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 20,
+            crossAxisSpacing: 20,
+            childAspectRatio: 1.0,
+          ),
+          delegate: SliverChildBuilderDelegate(
+            (context, i) => _CarCard(car: cars[i]),
+            childCount: cars.length,
+          ),
+        ),
+      );
+    }
+
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      sliver: SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, i) => _CarCard(car: cars[i]),
+          childCount: cars.length,
+        ),
+      ),
     );
   }
 }
