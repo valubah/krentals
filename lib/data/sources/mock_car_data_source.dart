@@ -349,13 +349,18 @@ class MockCarDataSource {
         'assets/images/cars/car_001_3.png',
       ],
       'description':
-      'Experience the future of driving with the BMW i4. This all-electric Gran Coupe combines emission-free driving with dynamic performance and luxury.',
+          'Experience the future of driving with the BMW i4. This all-electric Gran Coupe combines emission-free driving with dynamic performance and luxury.',
       'category': 'Electric',
       'seats': 5,
       'transmission': 'Single Speed',
       'rating': 4.9,
       'reviewCount': 124,
-      'features': ['Electric Drivetrain', 'iDrive 8.5', 'Heated Seats', 'Curved Display'],
+      'features': [
+        'Electric Drivetrain',
+        'iDrive 8.5',
+        'Heated Seats',
+        'Curved Display',
+      ],
       'blockedDates': [],
     },
     {
@@ -371,7 +376,7 @@ class MockCarDataSource {
         'assets/images/cars/car_002_3.png',
       ],
       'description':
-      'The mid-engine masterpiece that redefined the American supercar. Unmatched performance, sharp handling, and a cockpit designed for the driver.',
+          'The mid-engine masterpiece that redefined the American supercar. Unmatched performance, sharp handling, and a cockpit designed for the driver.',
       'category': 'Sports',
       'seats': 2,
       'transmission': '8-Speed Dual-Clutch',
@@ -393,7 +398,7 @@ class MockCarDataSource {
         'assets/images/cars/car_003_3.png',
       ],
       'description':
-      'A versatile and reliable SUV perfect for family trips or city commutes. Offers a spacious interior and smooth ride quality.',
+          'A versatile and reliable SUV perfect for family trips or city commutes. Offers a spacious interior and smooth ride quality.',
       'category': 'SUV',
       'seats': 5,
       'transmission': '6-Speed Automatic',
@@ -415,7 +420,7 @@ class MockCarDataSource {
         'assets/images/cars/car_004_3.png',
       ],
       'description':
-      'Efficiency meets reliability in the 2025 Corolla LE. A perfect choice for daily driving with advanced safety features and modern tech.',
+          'Efficiency meets reliability in the 2025 Corolla LE. A perfect choice for daily driving with advanced safety features and modern tech.',
       'category': 'Sedan',
       'seats': 5,
       'transmission': 'CVT',
@@ -437,7 +442,7 @@ class MockCarDataSource {
         'assets/images/cars/car_005_3.png',
       ],
       'description':
-      'Comfortable, quiet, and packed with value. The 2019 Tucson remains a top choice for those seeking a dependable compact SUV.',
+          'Comfortable, quiet, and packed with value. The 2019 Tucson remains a top choice for those seeking a dependable compact SUV.',
       'category': 'SUV',
       'seats': 5,
       'transmission': '6-Speed Automatic',
@@ -459,7 +464,7 @@ class MockCarDataSource {
         'assets/images/cars/car_006_3.png',
       ],
       'description':
-      'Luxury redefined in SUV form. The GV70 offers a stunning exterior, a world-class interior, and punchy performance from its turbo engine.',
+          'Luxury redefined in SUV form. The GV70 offers a stunning exterior, a world-class interior, and punchy performance from its turbo engine.',
       'category': 'Luxury SUV',
       'seats': 5,
       'transmission': '8-Speed Automatic',
@@ -481,7 +486,7 @@ class MockCarDataSource {
         'assets/images/cars/car_007_3.png',
       ],
       'description':
-      'The iconic American pony car. The EcoBoost Premium offers the perfect balance of Mustang style and turbocharged efficiency.',
+          'The iconic American pony car. The EcoBoost Premium offers the perfect balance of Mustang style and turbocharged efficiency.',
       'category': 'Sports',
       'seats': 4,
       'transmission': '10-Speed Automatic',
@@ -503,13 +508,18 @@ class MockCarDataSource {
         'assets/images/cars/car_008_3.png',
       ],
       'description':
-      'Experience the absolute peak of SUV luxury. Hand-crafted in Crewe, the Bentayga Azure offers effortless performance and unparalleled refinement.',
+          'Experience the absolute peak of SUV luxury. Hand-crafted in Crewe, the Bentayga Azure offers effortless performance and unparalleled refinement.',
       'category': 'Ultra Luxury',
       'seats': 5,
       'transmission': '8-Speed Automatic',
       'rating': 5.0,
       'reviewCount': 34,
-      'features': ['V8 Engine', 'Mulliner Spec', 'Wellness Seats', 'Naim Audio'],
+      'features': [
+        'V8 Engine',
+        'Mulliner Spec',
+        'Wellness Seats',
+        'Naim Audio',
+      ],
       'blockedDates': [],
     },
     {
@@ -525,21 +535,27 @@ class MockCarDataSource {
         'assets/images/cars/car_009_3.png',
       ],
       'description':
-      'Stylish and spacious with a bold, coupe-like profile. The 2026 Atlas Cross Sport delivers modern tech and versatility for any adventure.',
+          'Stylish and spacious with a bold, coupe-like profile. The 2026 Atlas Cross Sport delivers modern tech and versatility for any adventure.',
       'category': 'SUV',
       'seats': 5,
       'transmission': '8-Speed Automatic',
       'rating': 4.75,
       'reviewCount': 45,
-      'features': ['IQ.DRIVE', 'Wireless Charging', '12" Display', 'V-Tex Seats'],
+      'features': [
+        'IQ.DRIVE',
+        'Wireless Charging',
+        '12" Display',
+        'V-Tex Seats',
+      ],
       'blockedDates': [],
     },
   ];
 
   Future<List<Car>> getCars() async {
     await _delay(1200);
-    if (_random.nextInt(10) == 0) {
-      throw ServerException('Failed to load cars. Server returned 500.');
+    // Reduced to 2% chance to avoid frequent interruptions
+    if (_random.nextInt(50) == 0) {
+      throw const ServerException('The connection is unstable.');
     }
     return _carsJson.map((json) => Car.fromJson(json)).toList();
   }
@@ -547,7 +563,7 @@ class MockCarDataSource {
   Future<Car> getCarById(String id) async {
     await _delay(600);
     final json = _carsJson.firstWhere(
-          (c) => c['id'] == id,
+      (c) => c['id'] == id,
       orElse: () => throw NotFoundException('Car with id $id not found.'),
     );
     return Car.fromJson(json);
@@ -563,7 +579,10 @@ class MockCarDataSource {
     await _delay(2000);
     final shouldFail = _random.nextDouble() < 0.3;
     if (shouldFail) {
-      throw PaymentException(_randomPaymentErrorMessage(), code: 'PAYMENT_DECLINED');
+      throw PaymentException(
+        _randomPaymentErrorMessage(),
+        code: 'PAYMENT_DECLINED',
+      );
     }
     return PaymentResult(
       transactionId: 'TXN_${DateTime.now().millisecondsSinceEpoch}',

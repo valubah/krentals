@@ -218,13 +218,12 @@ class ErrorState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EmptyState(
-      icon: isNetworkError
-          ? Icons.wifi_off_rounded
-          : Icons.error_outline_rounded,
-      title: isNetworkError ? 'No Connection' : 'Something went wrong',
-      subtitle: message,
+      icon: isNetworkError ? Icons.wifi_off_rounded : Icons.cloud_off_rounded,
+      title: isNetworkError ? 'Connection Issue' : 'Almost There',
+      subtitle:
+          'Internet is poor. Please refresh the page or check your connection.',
       onAction: onRetry,
-      actionLabel: 'Try Again',
+      actionLabel: 'Try Refreshing',
     );
   }
 }
@@ -387,11 +386,7 @@ class AppImage extends StatelessWidget {
     return Shimmer.fromColors(
       baseColor: Colors.grey.shade200,
       highlightColor: Colors.grey.shade50,
-      child: Container(
-        width: width,
-        height: height,
-        color: Colors.white,
-      ),
+      child: Container(width: width, height: height, color: Colors.white),
     );
   }
 
