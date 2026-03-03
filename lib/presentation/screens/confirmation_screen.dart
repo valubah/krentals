@@ -98,7 +98,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
                           child: Column(
                             children: [
                               Text(
-                                'Booking Confirmed! 馃帀',
+                                'Booking Confirmed! 🎉',
                                 style: Theme.of(
                                   context,
                                 ).textTheme.headlineMedium,
