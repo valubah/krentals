@@ -88,7 +88,7 @@ class BookingScreen extends StatelessWidget {
   }
 }
 
-// 鈹€鈹€鈹€ Date Selection 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// --- Date Selection ---
 
 class _DateSelectionBody extends StatelessWidget {
   final BookingDateSelection state;
@@ -251,7 +251,7 @@ class _CarSummaryCard extends StatelessWidget {
               width: 72,
               height: 56,
               fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) => Container(
+              errorBuilder: (_, _, _) => Container(
                 width: 72,
                 height: 56,
                 color: Colors.grey.shade100,
@@ -554,7 +554,7 @@ class _BookingBottomBar extends StatelessWidget {
   }
 }
 
-// 鈹€鈹€鈹€ Payment Loading 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// --- Payment Loading ---
 
 class _PaymentLoadingBody extends StatelessWidget {
   final Booking booking;
@@ -628,7 +628,7 @@ class _PaymentLoadingBody extends StatelessWidget {
   }
 }
 
-// 鈹€鈹€鈹€ Payment Failed 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+// --- Payment Failed ---
 
 class _PaymentFailedBody extends StatelessWidget {
   final BookingPaymentFailed state;
@@ -790,7 +790,7 @@ class _PaymentFailedBody extends StatelessWidget {
 
   Car _extractCarFromState(BuildContext context) {
     // In production, Car would be stored in BookingPaymentFailed state or a separate cubit.
-    // Here we navigate back and let user restart 鈥?practical for the mock.
+    // Here we navigate back and let user restart - practical for the mock.
     Navigator.pop(context);
     // Return a placeholder (navigator.pop handles it)
     throw StateError('Navigation handled');

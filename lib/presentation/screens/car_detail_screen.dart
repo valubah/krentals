@@ -36,7 +36,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
       backgroundColor: AppTheme.surface,
       body: CustomScrollView(
         slivers: [
-          // 鈹€鈹€ Image Carousel App Bar 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+          // ── Image Carousel App Bar ──────────────────────────────────────
           SliverAppBar(
             expandedHeight: 300,
             pinned: true,
@@ -65,10 +65,10 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                         imageUrl: car.imageUrls[i],
                         fit: BoxFit.cover,
                         width: double.infinity,
-                        placeholder: (_, __) => Container(
+                        placeholder: (_, _) => Container(
                           color: Colors.grey.shade100,
                         ),
-                        errorWidget: (_, __, ___) => Container(
+                        errorWidget: (_, _, _) => Container(
                           color: Colors.grey.shade100,
                           child: Icon(Icons.directions_car_rounded,
                               size: 80, color: Colors.grey.shade300),
@@ -125,7 +125,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
             ),
           ),
 
-          // 鈹€鈹€ Content 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+          // ── Content ──────────────────────────────────────────────────────
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(20),
@@ -268,7 +268,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
         ],
       ),
 
-      // 鈹€鈹€ Book Button 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+      // ── Book Button ────────────────────────────────────────────────────
       bottomNavigationBar: _BookingBar(car: car),
     );
   }
@@ -361,7 +361,7 @@ class _AvailabilitySection extends StatelessWidget {
                 color: AppTheme.success, size: 20),
             const SizedBox(width: 10),
             Text(
-              'Fully available 鈥?no blocked dates',
+              'Fully available — no blocked dates',
               style: TextStyle(
                   color: AppTheme.success, fontWeight: FontWeight.w600),
             ),
@@ -390,7 +390,7 @@ class _AvailabilitySection extends StatelessWidget {
                     color: AppTheme.error, size: 16),
                 const SizedBox(width: 10),
                 Text(
-                  '${BookingDateUtils.toDisplay(b.start)}  鈫? ${BookingDateUtils.toDisplay(b.end)}',
+                  '${BookingDateUtils.toDisplay(b.start)}  →  ${BookingDateUtils.toDisplay(b.end)}',
                   style: const TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w500,

@@ -6,8 +6,7 @@ import '../../../data/models/car_model.dart';
 import '../../../data/repositories/car_repository.dart';
 import '../../../core/errors/failures.dart';
 
-// 鈹€鈹€鈹€ Events 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- Events ---
 abstract class CarListEvent extends Equatable {
   const CarListEvent();
   @override
@@ -30,8 +29,7 @@ class CarListFilterChanged extends CarListEvent {
   List<Object?> get props => [category, location];
 }
 
-// 鈹€鈹€鈹€ States 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- States ---
 abstract class CarListState extends Equatable {
   const CarListState();
   @override
@@ -67,7 +65,12 @@ class CarListLoaded extends CarListState {
   });
 
   @override
-  List<Object?> get props => [cars, filteredCars, activeCategory, activeLocation];
+  List<Object?> get props => [
+    cars,
+    filteredCars,
+    activeCategory,
+    activeLocation,
+  ];
 }
 
 class CarListEmpty extends CarListState {
@@ -82,31 +85,30 @@ class CarListError extends CarListState {
   List<Object?> get props => [message, isNetworkError];
 }
 
-// 鈹€鈹€鈹€ BLoC 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- BLoC ---
 class CarListBloc extends Bloc<CarListEvent, CarListState> {
   final CarRepository _repository;
 
   CarListBloc({required CarRepository repository})
-      : _repository = repository,
-        super(const CarListInitial()) {
+    : _repository = repository,
+      super(const CarListInitial()) {
     on<CarListLoadRequested>(_onLoad);
     on<CarListRefreshRequested>(_onRefresh);
     on<CarListFilterChanged>(_onFilterChanged);
   }
 
   Future<void> _onLoad(
-      CarListLoadRequested event,
-      Emitter<CarListState> emit,
-      ) async {
+    CarListLoadRequested event,
+    Emitter<CarListState> emit,
+  ) async {
     emit(const CarListLoading());
     await _fetchAndEmit(emit);
   }
 
   Future<void> _onRefresh(
-      CarListRefreshRequested event,
-      Emitter<CarListState> emit,
-      ) async {
+    CarListRefreshRequested event,
+    Emitter<CarListState> emit,
+  ) async {
     // Show current data while refreshing
     final current = state is CarListLoaded
         ? (state as CarListLoaded).cars
@@ -116,9 +118,9 @@ class CarListBloc extends Bloc<CarListEvent, CarListState> {
   }
 
   Future<void> _onFilterChanged(
-      CarListFilterChanged event,
-      Emitter<CarListState> emit,
-      ) async {
+    CarListFilterChanged event,
+    Emitter<CarListState> emit,
+  ) async {
     if (state is! CarListLoaded) return;
 
     final current = state as CarListLoaded;
@@ -128,12 +130,14 @@ class CarListBloc extends Bloc<CarListEvent, CarListState> {
       location: event.location,
     );
 
-    emit(CarListLoaded(
-      cars: current.cars,
-      filteredCars: filtered,
-      activeCategory: event.category,
-      activeLocation: event.location,
-    ));
+    emit(
+      CarListLoaded(
+        cars: current.cars,
+        filteredCars: filtered,
+        activeCategory: event.category,
+        activeLocation: event.location,
+      ),
+    );
   }
 
   Future<void> _fetchAndEmit(Emitter<CarListState> emit) async {
@@ -150,11 +154,13 @@ class CarListBloc extends Bloc<CarListEvent, CarListState> {
           ? (state as CarListLoaded).activeCategory
           : null;
 
-      emit(CarListLoaded(
-        cars: cars,
-        filteredCars: _applyFilters(cars, category: activeCategory),
-        activeCategory: activeCategory,
-      ));
+      emit(
+        CarListLoaded(
+          cars: cars,
+          filteredCars: _applyFilters(cars, category: activeCategory),
+          activeCategory: activeCategory,
+        ),
+      );
     } on NetworkFailure catch (e) {
       emit(CarListError(message: e.message, isNetworkError: true));
     } on Failure catch (e) {
@@ -163,17 +169,19 @@ class CarListBloc extends Bloc<CarListEvent, CarListState> {
   }
 
   List<Car> _applyFilters(
-      List<Car> cars, {
-        String? category,
-        String? location,
-      }) {
+    List<Car> cars, {
+    String? category,
+    String? location,
+  }) {
     var filtered = cars;
     if (category != null && category != 'All') {
       filtered = filtered.where((c) => c.category == category).toList();
     }
     if (location != null && location.isNotEmpty) {
       filtered = filtered
-          .where((c) => c.location.toLowerCase().contains(location.toLowerCase()))
+          .where(
+            (c) => c.location.toLowerCase().contains(location.toLowerCase()),
+          )
           .toList();
     }
     return filtered;

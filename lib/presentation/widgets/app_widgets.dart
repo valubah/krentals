@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../core/theme/app_theme.dart';
 
-// 鈹€鈹€鈹€ Availability Badge 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- Availability Badge ---
 class AvailabilityBadge extends StatelessWidget {
   final bool isAvailable;
   const AvailabilityBadge({super.key, required this.isAvailable});
@@ -52,8 +51,7 @@ class AvailabilityBadge extends StatelessWidget {
   }
 }
 
-// 鈹€鈹€鈹€ Price Tag 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- Price Tag ---
 class PriceTag extends StatelessWidget {
   final double price;
   final String? period;
@@ -95,8 +93,7 @@ class PriceTag extends StatelessWidget {
   }
 }
 
-// 鈹€鈹€鈹€ Loading Shimmer Card 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- Loading Shimmer Card ---
 class CarCardShimmer extends StatelessWidget {
   const CarCardShimmer({super.key});
 
@@ -127,17 +124,9 @@ class CarCardShimmer extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    width: 180,
-                    height: 20,
-                    color: Colors.white,
-                  ),
+                  Container(width: 180, height: 20, color: Colors.white),
                   const SizedBox(height: 8),
-                  Container(
-                    width: 120,
-                    height: 14,
-                    color: Colors.white,
-                  ),
+                  Container(width: 120, height: 14, color: Colors.white),
                   const SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -156,8 +145,7 @@ class CarCardShimmer extends StatelessWidget {
   }
 }
 
-// 鈹€鈹€鈹€ Empty State 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- Empty State ---
 class EmptyState extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -216,8 +204,7 @@ class EmptyState extends StatelessWidget {
   }
 }
 
-// 鈹€鈹€鈹€ Error State 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- Error State ---
 class ErrorState extends StatelessWidget {
   final String message;
   final bool isNetworkError;
@@ -233,7 +220,9 @@ class ErrorState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EmptyState(
-      icon: isNetworkError ? Icons.wifi_off_rounded : Icons.error_outline_rounded,
+      icon: isNetworkError
+          ? Icons.wifi_off_rounded
+          : Icons.error_outline_rounded,
       title: isNetworkError ? 'No Connection' : 'Something went wrong',
       subtitle: message,
       onAction: onRetry,
@@ -242,8 +231,7 @@ class ErrorState extends StatelessWidget {
   }
 }
 
-// 鈹€鈹€鈹€ Section Header 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- Section Header ---
 class SectionHeader extends StatelessWidget {
   final String title;
   final String? trailing;
@@ -279,8 +267,7 @@ class SectionHeader extends StatelessWidget {
   }
 }
 
-// 鈹€鈹€鈹€ Info Row 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- Info Row ---
 class InfoRow extends StatelessWidget {
   final IconData icon;
   final String label;
@@ -303,10 +290,9 @@ class InfoRow extends StatelessWidget {
         const SizedBox(width: 8),
         Text(
           label,
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium
-              ?.copyWith(color: AppTheme.textSecondary),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: AppTheme.textSecondary),
         ),
         const Spacer(),
         Text(
@@ -320,8 +306,7 @@ class InfoRow extends StatelessWidget {
   }
 }
 
-// 鈹€鈹€鈹€ Payment Status Badge 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- Payment Status Badge ---
 class StatusBadge extends StatelessWidget {
   final String label;
   final Color color;

@@ -59,7 +59,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
     final booking = widget.booking;
 
     return PopScope(
-      canPop: false, // Prevent back 鈥?booking is confirmed
+      canPop: false, // Prevent back - booking is confirmed
       child: Scaffold(
         backgroundColor: AppTheme.surface,
         body: SafeArea(
@@ -73,7 +73,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
                       children: [
                         const SizedBox(height: 40),
 
-                        // 鈹€鈹€ Success Animation 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+                        // --- Success Animation ---
                         ScaleTransition(
                           scale: _checkScale,
                           child: Container(
@@ -99,9 +99,9 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
                             children: [
                               Text(
                                 'Booking Confirmed! 馃帀',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineMedium,
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.headlineMedium,
                                 textAlign: TextAlign.center,
                               ),
                               const SizedBox(height: 6),
@@ -116,7 +116,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
 
                         const SizedBox(height: 32),
 
-                        // 鈹€鈹€ Booking Card 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+                        // --- Booking Card ---
                         FadeTransition(
                           opacity: _contentFade,
                           child: Container(
@@ -139,13 +139,13 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
                                 // Booking ID header
                                 Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       'Booking Details',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleMedium,
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.titleMedium,
                                     ),
                                     StatusBadge.confirmed(),
                                   ],
@@ -154,7 +154,9 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
                                 const Padding(
                                   padding: EdgeInsets.symmetric(vertical: 14),
                                   child: Divider(
-                                      color: AppTheme.divider, height: 1),
+                                    color: AppTheme.divider,
+                                    height: 1,
+                                  ),
                                 ),
 
                                 // Booking ID with copy
@@ -169,7 +171,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             'Booking ID',
@@ -192,21 +194,22 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
                                       ),
                                     ),
                                     IconButton(
-                                      icon: const Icon(Icons.copy_outlined,
-                                          size: 18,
-                                          color: AppTheme.textSecondary),
+                                      icon: const Icon(
+                                        Icons.copy_outlined,
+                                        size: 18,
+                                        color: AppTheme.textSecondary,
+                                      ),
                                       onPressed: () {
                                         Clipboard.setData(
-                                            ClipboardData(text: booking.id));
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
+                                          ClipboardData(text: booking.id),
+                                        );
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
                                           const SnackBar(
-                                            content:
-                                            Text('Booking ID copied!'),
-                                            behavior:
-                                            SnackBarBehavior.floating,
-                                            duration:
-                                            Duration(seconds: 2),
+                                            content: Text('Booking ID copied!'),
+                                            behavior: SnackBarBehavior.floating,
+                                            duration: Duration(seconds: 2),
                                           ),
                                         );
                                       },
@@ -225,39 +228,43 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
                                   icon: Icons.today_outlined,
                                   label: 'Pick-up',
                                   value: BookingDateUtils.toDisplay(
-                                      booking.startDate),
+                                    booking.startDate,
+                                  ),
                                 ),
                                 const SizedBox(height: 10),
                                 InfoRow(
                                   icon: Icons.event_outlined,
                                   label: 'Return',
                                   value: BookingDateUtils.toDisplay(
-                                      booking.endDate),
+                                    booking.endDate,
+                                  ),
                                 ),
                                 const SizedBox(height: 10),
                                 InfoRow(
                                   icon: Icons.schedule_outlined,
                                   label: 'Duration',
                                   value:
-                                  '${booking.totalDays} day${booking.totalDays > 1 ? 's' : ''}',
+                                      '${booking.totalDays} day${booking.totalDays > 1 ? 's' : ''}',
                                 ),
 
                                 const Padding(
                                   padding: EdgeInsets.symmetric(vertical: 14),
                                   child: Divider(
-                                      color: AppTheme.divider, height: 1),
+                                    color: AppTheme.divider,
+                                    height: 1,
+                                  ),
                                 ),
 
                                 // Total
                                 Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       'Total Charged',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleMedium,
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.titleMedium,
                                     ),
                                     Text(
                                       '\$${booking.totalAmount.toStringAsFixed(2)}',
@@ -282,22 +289,25 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
                           child: Container(
                             padding: const EdgeInsets.all(14),
                             decoration: BoxDecoration(
-                              color:
-                              AppTheme.primary.withValues(alpha: 0.04),
+                              color: AppTheme.primary.withValues(alpha: 0.04),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Row(
                               children: [
-                                const Icon(Icons.tips_and_updates_outlined,
-                                    size: 18, color: AppTheme.primary),
+                                const Icon(
+                                  Icons.tips_and_updates_outlined,
+                                  size: 18,
+                                  color: AppTheme.primary,
+                                ),
                                 const SizedBox(width: 10),
                                 Expanded(
                                   child: Text(
                                     'Show this booking ID at pick-up. Keep it safe!',
                                     style: TextStyle(
                                       fontSize: 13,
-                                      color: AppTheme.primary
-                                          .withValues(alpha: 0.8),
+                                      color: AppTheme.primary.withValues(
+                                        alpha: 0.8,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -310,7 +320,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen>
                   ),
                 ),
 
-                // 鈹€鈹€ Back to Home 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+                // --- Back to Home ---
                 FadeTransition(
                   opacity: _contentFade,
                   child: Column(

@@ -8,8 +8,7 @@ import '../../../data/repositories/car_repository.dart';
 import '../../../core/errors/failures.dart';
 import '../../../core/utils/date_utils.dart';
 
-// 鈹€鈹€鈹€ Events 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- Events ---
 abstract class BookingEvent extends Equatable {
   const BookingEvent();
   @override
@@ -56,8 +55,7 @@ class BookingReset extends BookingEvent {
   const BookingReset();
 }
 
-// 鈹€鈹€鈹€ States 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- States ---
 abstract class BookingState extends Equatable {
   const BookingState();
   @override
@@ -121,7 +119,7 @@ class BookingDateSelection extends BookingState {
   ];
 }
 
-/// Payment is in progress 鈥?UI should disable Pay button to prevent double tap
+/// Payment is in progress - UI should disable Pay button to prevent double tap
 class BookingPaymentInProgress extends BookingState {
   final Booking booking;
   const BookingPaymentInProgress(this.booking);
@@ -137,7 +135,7 @@ class BookingConfirmed extends BookingState {
   List<Object?> get props => [booking];
 }
 
-/// Payment failed 鈥?booking data preserved for retry
+/// Payment failed - booking data preserved for retry
 class BookingPaymentFailed extends BookingState {
   final Booking booking; // preserved
   final String errorMessage;
@@ -153,8 +151,7 @@ class BookingPaymentFailed extends BookingState {
   List<Object?> get props => [booking, errorMessage, isNetworkError];
 }
 
-// 鈹€鈹€鈹€ BLoC 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- BLoC ---
 class BookingBloc extends Bloc<BookingEvent, BookingState> {
   final BookingRepository _repository;
   bool _isPaymentInFlight = false; // Guard against double-tap
@@ -250,7 +247,7 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     BookingPaymentInitiated event,
     Emitter<BookingState> emit,
   ) async {
-    // 鈹€鈹€ Double-tap guard 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
+    // --- Double-tap guard ---
     if (_isPaymentInFlight) return;
 
     if (state is! BookingDateSelection) return;
@@ -351,8 +348,7 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     emit(const BookingInitial());
   }
 
-  // 鈹€鈹€ Helpers 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+  // --- Helpers ---
   Booking? _getInProgressBooking() {
     if (state is BookingPaymentInProgress) {
       return (state as BookingPaymentInProgress).booking;

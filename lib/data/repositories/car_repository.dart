@@ -7,7 +7,7 @@ import '../../core/errors/failures.dart';
 import '../../core/services/connectivity_service.dart';
 import 'package:uuid/uuid.dart';
 
-/// Abstract contract 鈥?allows mocking in tests and swapping implementations.
+/// Abstract contract - allows mocking in tests and swapping implementations.
 abstract class CarRepository {
   Future<List<Car>> getCars();
   Future<Car> getCarById(String id);
@@ -22,8 +22,6 @@ abstract class BookingRepository {
 
   Future<Booking> processPayment(Booking booking);
 }
-
-// 鈹€鈹€鈹€ Implementations 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
 
 class CarRepositoryImpl implements CarRepository {
   final MockCarDataSource _dataSource;
@@ -112,7 +110,7 @@ class BookingRepositoryImpl implements BookingRepository {
     if (!await _connectivity.isConnected) {
       // Preserve booking data, just throw network failure
       throw const NetworkFailure(
-        'No internet. Your booking details are saved 鈥?try again when connected.',
+        'No internet. Your booking details are saved - try again when connected.',
       );
     }
 

@@ -85,7 +85,7 @@ class CarListScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     sliver: SliverList(
                       delegate: SliverChildBuilderDelegate(
-                            (_, __) => const CarCardShimmer(),
+                            (_, _) => const CarCardShimmer(),
                         childCount: 4,
                       ),
                     ),
@@ -156,7 +156,7 @@ class _CategoryFilter extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         itemCount: categories.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 8),
+        separatorBuilder: (_, _) => const SizedBox(width: 8),
         itemBuilder: (context, i) {
           final cat = categories[i];
           final isActive = cat == activeCategory;
@@ -258,14 +258,14 @@ class _CarCard extends StatelessWidget {
                   height: 180,
                   width: double.infinity,
                   fit: BoxFit.cover,
-                  placeholder: (_, __) => Container(
+                  placeholder: (_, _) => Container(
                     height: 180,
                     color: Colors.grey.shade100,
                     child: const Center(
                       child: CircularProgressIndicator(strokeWidth: 2),
                     ),
                   ),
-                  errorWidget: (_, __, ___) => Container(
+                  errorWidget: (_, _, _) => Container(
                     height: 180,
                     color: Colors.grey.shade100,
                     child: Icon(

@@ -27,13 +27,19 @@ class MockCarDataSource {
         'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800',
       ],
       'description':
-      'Experience the pinnacle of electric performance. The Tesla Model S Plaid accelerates from 0鈥?0 mph in under 2 seconds, offering a range of 396 miles. Premium autopilot, minimalist interior, and over-the-air updates included.',
+          'Experience the pinnacle of electric performance. The Tesla Model S Plaid accelerates from 0-60 mph in under 2 seconds, offering a range of 396 miles. Premium autopilot, minimalist interior, and over-the-air updates included.',
       'category': 'Sedan',
       'seats': 5,
       'transmission': 'Automatic',
       'rating': 4.9,
       'reviewCount': 312,
-      'features': ['Autopilot', 'Heated Seats', 'Premium Sound', 'Fast Charging', 'Wi-Fi Hotspot'],
+      'features': [
+        'Autopilot',
+        'Heated Seats',
+        'Premium Sound',
+        'Fast Charging',
+        'Wi-Fi Hotspot',
+      ],
       'blockedDates': [
         {'start': '2026-03-05T00:00:00.000', 'end': '2026-03-09T00:00:00.000'},
         {'start': '2026-03-18T00:00:00.000', 'end': '2026-03-22T00:00:00.000'},
@@ -52,13 +58,19 @@ class MockCarDataSource {
         'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800',
       ],
       'description':
-      'Commanding luxury and unstoppable capability. The Range Rover Sport combines breathtaking performance with refined British craftsmanship. Ideal for city driving or off-road adventures across any terrain.',
+          'Commanding luxury and unstoppable capability. The Range Rover Sport combines breathtaking performance with refined British craftsmanship. Ideal for city driving or off-road adventures across any terrain.',
       'category': 'SUV',
       'seats': 7,
       'transmission': 'Automatic',
       'rating': 4.8,
       'reviewCount': 198,
-      'features': ['4WD', 'Panoramic Roof', 'Meridian Sound', 'Air Suspension', 'Off-Road Mode'],
+      'features': [
+        '4WD',
+        'Panoramic Roof',
+        'Meridian Sound',
+        'Air Suspension',
+        'Off-Road Mode',
+      ],
       'blockedDates': [
         {'start': '2026-03-10T00:00:00.000', 'end': '2026-03-14T00:00:00.000'},
       ],
@@ -76,13 +88,19 @@ class MockCarDataSource {
         'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800',
       ],
       'description':
-      'Pure driving nirvana. The Porsche 911 Carrera S is a sports car perfected over 60 years. With 443 hp, rear-wheel steering, and PASM sport suspension, every drive is an event. Manual or PDK available.',
+          'Pure driving nirvana. The Porsche 911 Carrera S is a sports car perfected over 60 years. With 443 hp, rear-wheel steering, and PASM sport suspension, every drive is an event. Manual or PDK available.',
       'category': 'Sports',
       'seats': 2,
       'transmission': 'PDK',
       'rating': 4.95,
       'reviewCount': 87,
-      'features': ['Sport Chrono', 'PASM', 'Bose Sound', 'Sport Exhaust', 'Launch Control'],
+      'features': [
+        'Sport Chrono',
+        'PASM',
+        'Bose Sound',
+        'Sport Exhaust',
+        'Launch Control',
+      ],
       'blockedDates': [
         {'start': '2026-03-01T00:00:00.000', 'end': '2026-03-03T00:00:00.000'},
         {'start': '2026-03-25T00:00:00.000', 'end': '2026-03-31T00:00:00.000'},
@@ -101,13 +119,19 @@ class MockCarDataSource {
         'https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=800',
       ],
       'description':
-      'Icon. Legend. G-Class. The Mercedes-AMG G 63 is the definitive luxury off-roader. With its hand-built 4.0L V8 biturbo engine producing 577 hp, it dominates every environment 鈥?urban jungle or mountain trail.',
+          'Icon. Legend. G-Class. The Mercedes-AMG G 63 is the definitive luxury off-roader. With its hand-built 4.0L V8 biturbo engine producing 577 hp, it dominates every environment - urban jungle or mountain trail.',
       'category': 'SUV',
       'seats': 5,
       'transmission': 'AMG Speedshift',
       'rating': 4.85,
       'reviewCount': 143,
-      'features': ['AMG Performance', '3 Locking Diffs', 'Burmester Sound', 'Heated Seats', 'Night Package'],
+      'features': [
+        'AMG Performance',
+        '3 Locking Diffs',
+        'Burmester Sound',
+        'Heated Seats',
+        'Night Package',
+      ],
       'blockedDates': [
         {'start': '2026-02-28T00:00:00.000', 'end': '2026-03-30T00:00:00.000'},
       ],
@@ -125,13 +149,19 @@ class MockCarDataSource {
         'https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800',
       ],
       'description':
-      'Where sports performance meets everyday versatility. The Cayenne Turbo puts 541 hp through all four wheels while wrapping you and your passengers in unrivaled Porsche luxury. Family car by day, sports car by night.',
+          'Where sports performance meets everyday versatility. The Cayenne Turbo puts 541 hp through all four wheels while wrapping you and your passengers in unrivaled Porsche luxury. Family car by day, sports car by night.',
       'category': 'SUV',
       'seats': 5,
       'transmission': 'Tiptronic S',
       'rating': 4.7,
       'reviewCount': 221,
-      'features': ['Turbo Engine', 'Air Suspension', 'Panoramic Roof', 'PASM', 'Rear-Wheel Steering'],
+      'features': [
+        'Turbo Engine',
+        'Air Suspension',
+        'Panoramic Roof',
+        'PASM',
+        'Rear-Wheel Steering',
+      ],
       'blockedDates': [
         {'start': '2026-03-07T00:00:00.000', 'end': '2026-03-11T00:00:00.000'},
       ],
@@ -149,13 +179,19 @@ class MockCarDataSource {
         'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800',
       ],
       'description':
-      'The future of luxury is electric. The Mercedes EQS 580 features the world\'s largest automotive display 鈥?the MBUX Hyperscreen 鈥?spanning the entire dashboard. 516 hp, 350-mile range, and pampering at every turn.',
+          'The future of luxury is electric. The Mercedes EQS 580 features the world\'s largest automotive display - the MBUX Hyperscreen - spanning the entire dashboard. 516 hp, 350-mile range, and pampering at every turn.',
       'category': 'Sedan',
       'seats': 5,
       'transmission': 'Automatic',
       'rating': 4.75,
       'reviewCount': 94,
-      'features': ['MBUX Hyperscreen', 'Air Suspension', 'Burmester 3D', 'HEPA Filter', 'Rear Axle Steering'],
+      'features': [
+        'MBUX Hyperscreen',
+        'Air Suspension',
+        'Burmester 3D',
+        'HEPA Filter',
+        'Rear Axle Steering',
+      ],
       'blockedDates': [],
     },
   ];
@@ -175,7 +211,7 @@ class MockCarDataSource {
     await _delay(600);
 
     final json = _carsJson.firstWhere(
-          (c) => c['id'] == id,
+      (c) => c['id'] == id,
       orElse: () => throw NotFoundException('Car with id $id not found.'),
     );
     return Car.fromJson(json);
@@ -220,8 +256,7 @@ class MockCarDataSource {
   }
 }
 
-// 鈹€鈹€鈹€ Typed Exceptions (repository converts to Failures) 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- Typed Exceptions (repository converts to Failures) ---
 class ServerException implements Exception {
   final String message;
   const ServerException(this.message);
@@ -238,8 +273,7 @@ class PaymentException implements Exception {
   const PaymentException(this.message, {required this.code});
 }
 
-// 鈹€鈹€鈹€ Result types 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
-
+// --- Result types ---
 class PaymentResult {
   final String transactionId;
   final String bookingId;
