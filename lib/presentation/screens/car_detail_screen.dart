@@ -49,8 +49,11 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                   color: Colors.black.withValues(alpha: 0.4),
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(Icons.arrow_back_ios_new_rounded,
-                    color: Colors.white, size: 18),
+                child: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  color: Colors.white,
+                  size: 18,
+                ),
               ),
             ),
             flexibleSpace: FlexibleSpaceBar(
@@ -61,19 +64,66 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                     child: PageView.builder(
                       controller: _pageController,
                       itemCount: car.imageUrls.length,
-                      itemBuilder: (context, i) => CachedNetworkImage(
-                        imageUrl: car.imageUrls[i],
-                        fit: BoxFit.cover,
-                        width: double.infinity,
-                        placeholder: (_, _) => Container(
-                          color: Colors.grey.shade100,
-                        ),
-                        errorWidget: (_, _, _) => Container(
-                          color: Colors.grey.shade100,
-                          child: Icon(Icons.directions_car_rounded,
-                              size: 80, color: Colors.grey.shade300),
-                        ),
-                      ),
+                      itemBuilder: (context, i) {
+                        return Stack(
+                          children: [
+                            CachedNetworkImage(
+                              imageUrl: car.imageUrls[i],
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                              placeholder: (_, _) =>
+                                  Container(color: Colors.grey.shade100),
+                              errorWidget: (_, _, _) => Container(
+                                color: Colors.grey.shade100,
+                                child: Icon(
+                                  Icons.directions_car_rounded,
+                                  size: 80,
+                                  color: Colors.grey.shade300,
+                                ),
+                              ),
+                            ),
+                            // Gradient overlay
+                            Positioned.fill(
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment.bottomCenter,
+                                    end: Alignment.center,
+                                    colors: [
+                                      Colors.black.withValues(alpha: 0.3),
+                                      Colors.transparent,
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            // Angle Label Badge (Turo-style)
+                            Positioned(
+                              bottom: 16,
+                              left: 16,
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: 5,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withValues(alpha: 0.5),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Text(
+                                  _getAngleLabel(i),
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w600,
+                                    letterSpacing: 0.5,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ),
                   // Page indicator
@@ -100,7 +150,9 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                     right: 16,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 5),
+                        horizontal: 10,
+                        vertical: 5,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.black.withValues(alpha: 0.5),
                         borderRadius: BorderRadius.circular(20),
@@ -108,13 +160,18 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.photo_library_outlined,
-                              color: Colors.white, size: 14),
+                          const Icon(
+                            Icons.photo_library_outlined,
+                            color: Colors.white,
+                            size: 14,
+                          ),
                           const SizedBox(width: 4),
                           Text(
                             '${car.imageUrls.length} photos',
                             style: const TextStyle(
-                                color: Colors.white, fontSize: 12),
+                              color: Colors.white,
+                              fontSize: 12,
+                            ),
                           ),
                         ],
                       ),
@@ -142,9 +199,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                           children: [
                             Text(
                               car.brand,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
+                              style: Theme.of(context).textTheme.bodyMedium
                                   ?.copyWith(fontWeight: FontWeight.w500),
                             ),
                             Text(
@@ -170,22 +225,29 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                   // Rating & location
                   Row(
                     children: [
-                      Icon(Icons.star_rounded,
-                          color: Colors.amber.shade600, size: 18),
+                      Icon(
+                        Icons.star_rounded,
+                        color: Colors.amber.shade600,
+                        size: 18,
+                      ),
                       const SizedBox(width: 4),
                       Text(
                         '${car.rating} (${car.reviewCount} reviews)',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(color: AppTheme.textPrimary),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: AppTheme.textPrimary,
+                        ),
                       ),
                       const SizedBox(width: 16),
-                      const Icon(Icons.location_on_outlined,
-                          size: 16, color: AppTheme.textSecondary),
+                      const Icon(
+                        Icons.location_on_outlined,
+                        size: 16,
+                        color: AppTheme.textSecondary,
+                      ),
                       const SizedBox(width: 4),
-                      Text(car.location,
-                          style: Theme.of(context).textTheme.bodyMedium),
+                      Text(
+                        car.location,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
                     ],
                   ),
 
@@ -198,17 +260,20 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       _SpecItem(
-                          icon: Icons.category_outlined,
-                          label: 'Category',
-                          value: car.category),
+                        icon: Icons.category_outlined,
+                        label: 'Category',
+                        value: car.category,
+                      ),
                       _SpecItem(
-                          icon: Icons.people_outline,
-                          label: 'Seats',
-                          value: '${car.seats} people'),
+                        icon: Icons.people_outline,
+                        label: 'Seats',
+                        value: '${car.seats} people',
+                      ),
                       _SpecItem(
-                          icon: Icons.settings_outlined,
-                          label: 'Gearbox',
-                          value: car.transmission),
+                        icon: Icons.settings_outlined,
+                        label: 'Gearbox',
+                        value: car.transmission,
+                      ),
                     ],
                   ),
 
@@ -235,11 +300,15 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                   ),
                   TextButton(
                     onPressed: () => setState(
-                            () => _descriptionExpanded = !_descriptionExpanded),
+                      () => _descriptionExpanded = !_descriptionExpanded,
+                    ),
                     style: TextButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                        foregroundColor: AppTheme.accent),
-                    child: Text(_descriptionExpanded ? 'Show less' : 'Read more'),
+                      padding: EdgeInsets.zero,
+                      foregroundColor: AppTheme.accent,
+                    ),
+                    child: Text(
+                      _descriptionExpanded ? 'Show less' : 'Read more',
+                    ),
                   ),
 
                   const SizedBox(height: 16),
@@ -272,6 +341,19 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
       bottomNavigationBar: _BookingBar(car: car),
     );
   }
+
+  String _getAngleLabel(int index) {
+    switch (index) {
+      case 0:
+        return 'FRONT';
+      case 1:
+        return 'SIDE';
+      case 2:
+        return 'INTERIOR';
+      default:
+        return 'REAR';
+    }
+  }
 }
 
 class _SpecItem extends StatelessWidget {
@@ -279,8 +361,11 @@ class _SpecItem extends StatelessWidget {
   final String label;
   final String value;
 
-  const _SpecItem(
-      {required this.icon, required this.label, required this.value});
+  const _SpecItem({
+    required this.icon,
+    required this.label,
+    required this.value,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -297,17 +382,11 @@ class _SpecItem extends StatelessWidget {
         const SizedBox(height: 6),
         Text(
           label,
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium
-              ?.copyWith(fontSize: 11),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 11),
         ),
         Text(
           value,
-          style: Theme.of(context)
-              .textTheme
-              .labelLarge
-              ?.copyWith(fontSize: 13),
+          style: Theme.of(context).textTheme.labelLarge?.copyWith(fontSize: 13),
         ),
       ],
     );
@@ -330,11 +409,16 @@ class _FeatureChip extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(Icons.check_circle_outline_rounded,
-              size: 14, color: AppTheme.success),
+          const Icon(
+            Icons.check_circle_outline_rounded,
+            size: 14,
+            color: AppTheme.success,
+          ),
           const SizedBox(width: 6),
-          Text(feature,
-              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+          Text(
+            feature,
+            style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+          ),
         ],
       ),
     );
@@ -357,13 +441,18 @@ class _AvailabilitySection extends StatelessWidget {
         ),
         child: Row(
           children: [
-            const Icon(Icons.event_available_rounded,
-                color: AppTheme.success, size: 20),
+            const Icon(
+              Icons.event_available_rounded,
+              color: AppTheme.success,
+              size: 20,
+            ),
             const SizedBox(width: 10),
             Text(
               'Fully available — no blocked dates',
               style: TextStyle(
-                  color: AppTheme.success, fontWeight: FontWeight.w600),
+                color: AppTheme.success,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ],
         ),
@@ -376,7 +465,7 @@ class _AvailabilitySection extends StatelessWidget {
         const SectionHeader(title: 'Unavailable Dates'),
         const SizedBox(height: 10),
         ...car.blockedDates.map(
-              (b) => Container(
+          (b) => Container(
             margin: const EdgeInsets.only(bottom: 8),
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             decoration: BoxDecoration(
@@ -386,8 +475,11 @@ class _AvailabilitySection extends StatelessWidget {
             ),
             child: Row(
               children: [
-                const Icon(Icons.event_busy_rounded,
-                    color: AppTheme.error, size: 16),
+                const Icon(
+                  Icons.event_busy_rounded,
+                  color: AppTheme.error,
+                  size: 16,
+                ),
                 const SizedBox(width: 10),
                 Text(
                   '${BookingDateUtils.toDisplay(b.start)}  →  ${BookingDateUtils.toDisplay(b.end)}',
@@ -443,25 +535,24 @@ class _BookingBar extends StatelessWidget {
             child: FilledButton(
               onPressed: car.isAvailable
                   ? () {
-                context
-                    .read<BookingBloc>()
-                    .add(BookingCarSelected(car));
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => BlocProvider.value(
-                      value: context.read<BookingBloc>(),
-                      child: const BookingScreen(),
-                    ),
-                  ),
-                );
-              }
+                      context.read<BookingBloc>().add(BookingCarSelected(car));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => BlocProvider.value(
+                            value: context.read<BookingBloc>(),
+                            child: const BookingScreen(),
+                          ),
+                        ),
+                      );
+                    }
                   : null,
-              style: FilledButton.styleFrom(
-                minimumSize: const Size(0, 52),
-              ),
+              style: FilledButton.styleFrom(minimumSize: const Size(0, 52)),
               child: Text(
-                  car.isAvailable ? 'Select Dates & Book' : 'Currently Unavailable'),
+                car.isAvailable
+                    ? 'Select Dates & Book'
+                    : 'Currently Unavailable',
+              ),
             ),
           ),
         ],

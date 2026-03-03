@@ -1,11 +1,11 @@
 {
-    "name": "krentals",
-    "short_name": "krentals",
+    "name": "K Rentals",
+    "short_name": "K Rentals",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "Car Booking Feature",
+    "background_color": "#0F172A",
+    "theme_color": "#38BDF8",
+    "description": "Premium Car Rental Experience",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

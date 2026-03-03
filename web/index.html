@@ -18,29 +18,85 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Car Booking Feature">
+  <meta name="description" content="Premium Car Rental Experience">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="krentals">
+  <meta name="apple-mobile-web-app-title" content="K Rentals">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>krentals</title>
+  <title>K Rentals | Drive the Future</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      background-color: #0F172A;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    .splash-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 1s ease-out;
+    }
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.3));
+    }
+    .brand-name {
+      color: white;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+    .loader {
+      width: 40px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      margin-top: 32px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    .loader::after {
+      content: '';
+      position: absolute;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #38BDF8;
+      animation: load 2s infinite ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes load {
+      0% { left: -100%; }
+      50% { left: 0%; }
+      100% { left: 100%; }
+    }
+  </style>
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
-
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
+  <div class="splash-container">
+    <img src="assets/images/logo.png" alt="K Rentals Logo" class="logo">
+    <h1 class="brand-name">K RENTALS</h1>
+    <div class="loader"></div>
+  </div>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

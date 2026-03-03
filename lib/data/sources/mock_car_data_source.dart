@@ -22,9 +22,9 @@ class MockCarDataSource {
       'location': 'Lagos, Nigeria',
       'isAvailable': true,
       'imageUrls': [
-        'https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800',
-        'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800',
-        'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800',
+        'https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800', // Front
+        'https://images.unsplash.com/photo-1617788138021-36fdb31a9412?w=800', // Side
+        'https://images.unsplash.com/photo-1617650637118-245f3c9ea565?w=800', // Interior/Rear
       ],
       'description':
           'Experience the pinnacle of electric performance. The Tesla Model S Plaid accelerates from 0-60 mph in under 2 seconds, offering a range of 396 miles. Premium autopilot, minimalist interior, and over-the-air updates included.',
@@ -53,9 +53,9 @@ class MockCarDataSource {
       'location': 'Abuja, Nigeria',
       'isAvailable': true,
       'imageUrls': [
-        'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800',
-        'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800',
-        'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800',
+        'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800', // Front
+        'https://images.unsplash.com/photo-1519702213-912fc996d741?w=800', // Side
+        'https://images.unsplash.com/photo-1521743603403-f36894c264b4?w=800', // Detail
       ],
       'description':
           'Commanding luxury and unstoppable capability. The Range Rover Sport combines breathtaking performance with refined British craftsmanship. Ideal for city driving or off-road adventures across any terrain.',
@@ -83,9 +83,9 @@ class MockCarDataSource {
       'location': 'Lagos, Nigeria',
       'isAvailable': true,
       'imageUrls': [
-        'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800',
-        'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800',
-        'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800',
+        'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800', // Front 3/4
+        'https://images.unsplash.com/photo-1542362567-b05500269774?w=800', // Side Profile
+        'https://images.unsplash.com/photo-1534093607318-f025413f49cb?w=800', // Rear/Detail
       ],
       'description':
           'Pure driving nirvana. The Porsche 911 Carrera S is a sports car perfected over 60 years. With 443 hp, rear-wheel steering, and PASM sport suspension, every drive is an event. Manual or PDK available.',
@@ -114,9 +114,9 @@ class MockCarDataSource {
       'location': 'Port Harcourt, Nigeria',
       'isAvailable': false,
       'imageUrls': [
-        'https://images.unsplash.com/photo-1563720223185-11003d516935?w=800',
-        'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800',
-        'https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=800',
+        'https://images.unsplash.com/photo-1563720223185-11003d516935?w=800', // Front 3/4
+        'https://images.unsplash.com/photo-1589148625905-0196e8557b6f?w=800', // Side Profile
+        'https://images.unsplash.com/photo-1596707323531-e94ade50f001?w=800', // Interior
       ],
       'description':
           'Icon. Legend. G-Class. The Mercedes-AMG G 63 is the definitive luxury off-roader. With its hand-built 4.0L V8 biturbo engine producing 577 hp, it dominates every environment - urban jungle or mountain trail.',
@@ -144,9 +144,9 @@ class MockCarDataSource {
       'location': 'Lagos, Nigeria',
       'isAvailable': true,
       'imageUrls': [
-        'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800',
-        'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800',
-        'https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800',
+        'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800', // Front
+        'https://images.unsplash.com/photo-1610443916035-7c010c73229b?w=800', // Rear 3/4
+        'https://images.unsplash.com/photo-1614162692292-7ac56d77771e?w=800', // Interior
       ],
       'description':
           'Where sports performance meets everyday versatility. The Cayenne Turbo puts 541 hp through all four wheels while wrapping you and your passengers in unrivaled Porsche luxury. Family car by day, sports car by night.',
@@ -174,9 +174,9 @@ class MockCarDataSource {
       'location': 'Abuja, Nigeria',
       'isAvailable': true,
       'imageUrls': [
-        'https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=800',
-        'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800',
-        'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800',
+        'https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=800', // Front
+        'https://images.unsplash.com/photo-1617469614457-37dfd08006e2?w=800', // Side
+        'https://images.unsplash.com/photo-1617469651910-449e75528825?w=800', // Interior
       ],
       'description':
           'The future of luxury is electric. The Mercedes EQS 580 features the world\'s largest automotive display - the MBUX Hyperscreen - spanning the entire dashboard. 516 hp, 350-mile range, and pampering at every turn.',
