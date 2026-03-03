@@ -82,10 +82,24 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                     scrollBehavior: AppScrollBehavior(),
                     itemCount: car.imageUrls.length,
                     itemBuilder: (context, i) {
+                      final imageWidget = AppImage(
+                        path: car.imageUrls[i],
+                        fit: BoxFit.cover,
+                      );
+
                       return Stack(
                         fit: StackFit.expand,
                         children: [
-                          AppImage(path: car.imageUrls[i], fit: BoxFit.cover),
+                          if (i == 0)
+                            Hero(
+                              tag: 'car_${car.id}',
+                              child: Material(
+                                color: Colors.transparent,
+                                child: imageWidget,
+                              ),
+                            )
+                          else
+                            imageWidget,
                           // Subtle bottom gradient
                           DecoratedBox(
                             decoration: BoxDecoration(

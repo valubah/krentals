@@ -366,23 +366,6 @@ class AppImage extends StatelessWidget {
       width: width,
       height: height,
       fit: fit,
-      frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-        if (wasSynchronouslyLoaded) return child;
-        return AnimatedSwitcher(
-          duration: const Duration(milliseconds: 300),
-          child: frame != null
-              ? child
-              : Shimmer.fromColors(
-                  baseColor: Colors.grey.shade200,
-                  highlightColor: Colors.grey.shade50,
-                  child: Container(
-                    width: width ?? double.infinity,
-                    height: height ?? double.infinity,
-                    color: Colors.white,
-                  ),
-                ),
-        );
-      },
       errorBuilder: (context, error, stackTrace) {
         return Container(
           width: width,
@@ -398,7 +381,7 @@ class AppImage extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                'Failed to load',
+                'Image unavailable',
                 style: TextStyle(color: Colors.grey.shade500, fontSize: 10),
               ),
             ],
