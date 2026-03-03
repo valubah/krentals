@@ -32,314 +32,377 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final car = widget.car;
+    final size = MediaQuery.of(context).size;
+    final isDesktop = size.width > 900;
+
     return Scaffold(
       backgroundColor: AppTheme.surface,
-      body: CustomScrollView(
-        slivers: [
-          // ── Image Carousel App Bar ──────────────────────────────────────
-          SliverAppBar(
-            expandedHeight: 300,
-            pinned: true,
-            backgroundColor: AppTheme.cardBg,
-            leading: GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: Container(
-                margin: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.black.withValues(alpha: 0.4),
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(
-                  Icons.arrow_back_ios_new_rounded,
-                  color: Colors.white,
-                  size: 18,
-                ),
-              ),
-            ),
-            flexibleSpace: FlexibleSpaceBar(
-              background: Stack(
-                children: [
-                  Hero(
-                    tag: 'car_${car.id}',
-                    child: PageView.builder(
-                      controller: _pageController,
-                      scrollBehavior: AppScrollBehavior(),
-                      itemCount: car.imageUrls.length,
-                      itemBuilder: (context, i) {
-                        return Stack(
-                          children: [
-                            AspectRatio(
-                              aspectRatio: 16 / 9,
-                              child: Image.asset(
-                                car.imageUrls[i],
-                                fit: BoxFit.cover,
-                                errorBuilder: (_, _, _) => Container(
-                                  color: Colors.grey.shade100,
-                                  child: const Icon(
-                                    Icons.directions_car_rounded,
-                                    size: 100,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            // Gradient overlay
-                            Positioned.fill(
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    begin: Alignment.bottomCenter,
-                                    end: Alignment.center,
-                                    colors: [
-                                      Colors.black.withValues(alpha: 0.3),
-                                      Colors.transparent,
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            // Angle Label Badge (Turo-style)
-                            Positioned(
-                              bottom: 16,
-                              left: 16,
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 5,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Colors.black.withValues(alpha: 0.5),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Text(
-                                  _getAngleLabel(i),
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w600,
-                                    letterSpacing: 0.5,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        );
-                      },
+      body: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: isDesktop ? 1000 : double.infinity,
+          ),
+          child: CustomScrollView(
+            slivers: [
+              // ── Image Carousel App Bar ──────────────────────────────────────
+              SliverAppBar(
+                expandedHeight: isDesktop ? 500 : 300,
+                pinned: true,
+                backgroundColor: AppTheme.cardBg,
+                leading: GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: Container(
+                    margin: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.4),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: Colors.white,
+                      size: 18,
                     ),
                   ),
-                  // Page indicator
-                  Positioned(
-                    bottom: 16,
-                    left: 0,
-                    right: 0,
-                    child: Center(
-                      child: SmoothPageIndicator(
-                        controller: _pageController,
-                        count: car.imageUrls.length,
-                        effect: WormEffect(
-                          dotWidth: 8,
-                          dotHeight: 8,
-                          activeDotColor: Colors.white,
-                          dotColor: Colors.white.withValues(alpha: 0.4),
+                ),
+                flexibleSpace: FlexibleSpaceBar(
+                  background: Stack(
+                    children: [
+                      Hero(
+                        tag: 'car_${car.id}',
+                        child: PageView.builder(
+                          controller: _pageController,
+                          scrollBehavior: AppScrollBehavior(),
+                          itemCount: car.imageUrls.length,
+                          itemBuilder: (context, i) {
+                            return Stack(
+                              children: [
+                                SizedBox.expand(
+                                  child: Image.asset(
+                                    car.imageUrls[i],
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (_, _, _) => Container(
+                                      color: Colors.grey.shade100,
+                                      child: const Icon(
+                                        Icons.directions_car_rounded,
+                                        size: 100,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                // Gradient overlay
+                                Positioned.fill(
+                                  child: DecoratedBox(
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        begin: Alignment.bottomCenter,
+                                        end: Alignment.topCenter,
+                                        colors: [
+                                          Colors.black.withValues(alpha: 0.4),
+                                          Colors.transparent,
+                                          Colors.black.withValues(alpha: 0.1),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                // Angle Label Badge (Turo-style)
+                                Positioned(
+                                  bottom: 24,
+                                  left: 20,
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                      vertical: 6,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: Colors.black.withValues(
+                                        alpha: 0.4,
+                                      ),
+                                      borderRadius: BorderRadius.circular(20),
+                                      border: Border.all(
+                                        color: Colors.white.withValues(
+                                          alpha: 0.2,
+                                        ),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      _getAngleLabel(i),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w700,
+                                        letterSpacing: 0.8,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
                         ),
                       ),
-                    ),
+                      // Page indicator
+                      Positioned(
+                        bottom: 24,
+                        left: 0,
+                        right: 0,
+                        child: Center(
+                          child: SmoothPageIndicator(
+                            controller: _pageController,
+                            count: car.imageUrls.length,
+                            effect: WormEffect(
+                              dotWidth: 8,
+                              dotHeight: 8,
+                              activeDotColor: Colors.white,
+                              dotColor: Colors.white.withValues(alpha: 0.4),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Photo count badge
+                      Positioned(
+                        top: MediaQuery.of(context).padding.top + 8,
+                        right: 16,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.black.withValues(alpha: 0.4),
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: Colors.white.withValues(alpha: 0.2),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.photo_library_rounded,
+                                color: Colors.white,
+                                size: 14,
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                '${car.imageUrls.length} photos',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  // Photo count badge
-                  Positioned(
-                    top: 16,
-                    right: 16,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 5,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.5),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
+                ),
+              ),
+
+              // ── Content ──────────────────────────────────────────────────────
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Header
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  car.brand,
+                                  style: Theme.of(context).textTheme.bodyMedium
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        color: AppTheme.accent,
+                                        letterSpacing: 1,
+                                      ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  car.name,
+                                  style: isDesktop
+                                      ? Theme.of(
+                                          context,
+                                        ).textTheme.displayMedium
+                                      : Theme.of(
+                                          context,
+                                        ).textTheme.displaySmall,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              PriceTag(
+                                price: car.pricePerDay,
+                                fontSize: isDesktop ? 28 : 22,
+                              ),
+                              const SizedBox(height: 8),
+                              AvailabilityBadge(isAvailable: car.isAvailable),
+                            ],
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 16),
+
+                      // Rating & location
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.amber.shade50,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.star_rounded,
+                                  color: Colors.amber.shade700,
+                                  size: 18,
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  '${car.rating}',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.amber.shade900,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            '(${car.reviewCount} reviews)',
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(color: AppTheme.textSecondary),
+                          ),
+                          const SizedBox(width: 20),
                           const Icon(
-                            Icons.photo_library_outlined,
-                            color: Colors.white,
-                            size: 14,
+                            Icons.location_on_rounded,
+                            size: 18,
+                            color: AppTheme.accent,
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            '${car.imageUrls.length} photos',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                            ),
+                            car.location,
+                            style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         ],
                       ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
 
-          // ── Content ──────────────────────────────────────────────────────
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Header
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              car.brand,
-                              style: Theme.of(context).textTheme.bodyMedium
-                                  ?.copyWith(fontWeight: FontWeight.w500),
-                            ),
-                            Text(
-                              car.name,
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                      const SizedBox(height: 20),
+                      const Divider(color: AppTheme.divider),
+                      const SizedBox(height: 20),
+
+                      // Specs row
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          PriceTag(price: car.pricePerDay, fontSize: 22),
-                          const SizedBox(height: 4),
-                          AvailabilityBadge(isAvailable: car.isAvailable),
+                          _SpecItem(
+                            icon: Icons.category_outlined,
+                            label: 'Category',
+                            value: car.category,
+                          ),
+                          _SpecItem(
+                            icon: Icons.people_outline,
+                            label: 'Seats',
+                            value: '${car.seats} people',
+                          ),
+                          _SpecItem(
+                            icon: Icons.settings_outlined,
+                            label: 'Gearbox',
+                            value: car.transmission,
+                          ),
                         ],
                       ),
-                    ],
-                  ),
 
-                  const SizedBox(height: 12),
+                      const SizedBox(height: 24),
 
-                  // Rating & location
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.star_rounded,
-                        color: Colors.amber.shade600,
-                        size: 18,
-                      ),
-                      const SizedBox(width: 4),
-                      Text(
-                        '${car.rating} (${car.reviewCount} reviews)',
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: AppTheme.textPrimary,
+                      // Description
+                      const SectionHeader(title: 'About this car'),
+                      const SizedBox(height: 10),
+                      AnimatedCrossFade(
+                        duration: const Duration(milliseconds: 300),
+                        crossFadeState: _descriptionExpanded
+                            ? CrossFadeState.showSecond
+                            : CrossFadeState.showFirst,
+                        firstChild: Text(
+                          car.description,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        secondChild: Text(
+                          car.description,
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ),
-                      const SizedBox(width: 16),
-                      const Icon(
-                        Icons.location_on_outlined,
-                        size: 16,
-                        color: AppTheme.textSecondary,
+                      TextButton(
+                        onPressed: () => setState(
+                          () => _descriptionExpanded = !_descriptionExpanded,
+                        ),
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                          foregroundColor: AppTheme.accent,
+                        ),
+                        child: Text(
+                          _descriptionExpanded ? 'Show less' : 'Read more',
+                        ),
                       ),
-                      const SizedBox(width: 4),
-                      Text(
-                        car.location,
-                        style: Theme.of(context).textTheme.bodyMedium,
+
+                      const SizedBox(height: 16),
+
+                      // Features
+                      const SectionHeader(title: 'Features'),
+                      const SizedBox(height: 12),
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: car.features
+                            .map((f) => _FeatureChip(feature: f))
+                            .toList(),
                       ),
+
+                      const SizedBox(height: 24),
+
+                      // Availability calendar hint
+                      _AvailabilitySection(car: car),
+
+                      const SizedBox(height: 100), // Bottom padding for FAB
                     ],
                   ),
-
-                  const SizedBox(height: 20),
-                  const Divider(color: AppTheme.divider),
-                  const SizedBox(height: 20),
-
-                  // Specs row
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      _SpecItem(
-                        icon: Icons.category_outlined,
-                        label: 'Category',
-                        value: car.category,
-                      ),
-                      _SpecItem(
-                        icon: Icons.people_outline,
-                        label: 'Seats',
-                        value: '${car.seats} people',
-                      ),
-                      _SpecItem(
-                        icon: Icons.settings_outlined,
-                        label: 'Gearbox',
-                        value: car.transmission,
-                      ),
-                    ],
-                  ),
-
-                  const SizedBox(height: 24),
-
-                  // Description
-                  const SectionHeader(title: 'About this car'),
-                  const SizedBox(height: 10),
-                  AnimatedCrossFade(
-                    duration: const Duration(milliseconds: 300),
-                    crossFadeState: _descriptionExpanded
-                        ? CrossFadeState.showSecond
-                        : CrossFadeState.showFirst,
-                    firstChild: Text(
-                      car.description,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    secondChild: Text(
-                      car.description,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () => setState(
-                      () => _descriptionExpanded = !_descriptionExpanded,
-                    ),
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                      foregroundColor: AppTheme.accent,
-                    ),
-                    child: Text(
-                      _descriptionExpanded ? 'Show less' : 'Read more',
-                    ),
-                  ),
-
-                  const SizedBox(height: 16),
-
-                  // Features
-                  const SectionHeader(title: 'Features'),
-                  const SizedBox(height: 12),
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: car.features
-                        .map((f) => _FeatureChip(feature: f))
-                        .toList(),
-                  ),
-
-                  const SizedBox(height: 24),
-
-                  // Availability calendar hint
-                  _AvailabilitySection(car: car),
-
-                  const SizedBox(height: 100), // Bottom padding for FAB
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
 
       // ── Book Button ────────────────────────────────────────────────────
-      bottomNavigationBar: _BookingBar(car: car),
+      bottomNavigationBar: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: isDesktop ? 1000 : double.infinity,
+          ),
+          child: _BookingBar(car: car),
+        ),
+      ),
     );
   }
 
