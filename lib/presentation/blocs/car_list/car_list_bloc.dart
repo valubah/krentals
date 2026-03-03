@@ -23,10 +23,10 @@ class CarListRefreshRequested extends CarListEvent {
 
 class CarListFilterChanged extends CarListEvent {
   final String? category;
-  final String? location;
-  const CarListFilterChanged({this.category, this.location});
+  final String? searchQuery;
+  const CarListFilterChanged({this.category, this.searchQuery});
   @override
-  List<Object?> get props => [category, location];
+  List<Object?> get props => [category, searchQuery];
 }
 
 // --- States ---
@@ -55,13 +55,13 @@ class CarListLoaded extends CarListState {
   final List<Car> cars;
   final List<Car> filteredCars;
   final String? activeCategory;
-  final String? activeLocation;
+  final String? activeSearchQuery;
 
   const CarListLoaded({
     required this.cars,
     required this.filteredCars,
     this.activeCategory,
-    this.activeLocation,
+    this.activeSearchQuery,
   });
 
   @override
@@ -69,7 +69,7 @@ class CarListLoaded extends CarListState {
     cars,
     filteredCars,
     activeCategory,
-    activeLocation,
+    activeSearchQuery,
   ];
 }
 
@@ -127,7 +127,7 @@ class CarListBloc extends Bloc<CarListEvent, CarListState> {
     final filtered = _applyFilters(
       current.cars,
       category: event.category,
-      location: event.location,
+      searchQuery: event.searchQuery,
     );
 
     emit(
@@ -135,7 +135,7 @@ class CarListBloc extends Bloc<CarListEvent, CarListState> {
         cars: current.cars,
         filteredCars: filtered,
         activeCategory: event.category,
-        activeLocation: event.location,
+        activeSearchQuery: event.searchQuery,
       ),
     );
   }
@@ -150,15 +150,22 @@ class CarListBloc extends Bloc<CarListEvent, CarListState> {
       }
 
       // Preserve active filters if any
-      final activeCategory = state is CarListLoaded
-          ? (state as CarListLoaded).activeCategory
+      final currentLoaded = state is CarListLoaded
+          ? (state as CarListLoaded)
           : null;
+      final activeCategory = currentLoaded?.activeCategory;
+      final activeSearchQuery = currentLoaded?.activeSearchQuery;
 
       emit(
         CarListLoaded(
           cars: cars,
-          filteredCars: _applyFilters(cars, category: activeCategory),
+          filteredCars: _applyFilters(
+            cars,
+            category: activeCategory,
+            searchQuery: activeSearchQuery,
+          ),
           activeCategory: activeCategory,
+          activeSearchQuery: activeSearchQuery,
         ),
       );
     } on NetworkFailure catch (e) {
@@ -171,16 +178,20 @@ class CarListBloc extends Bloc<CarListEvent, CarListState> {
   List<Car> _applyFilters(
     List<Car> cars, {
     String? category,
-    String? location,
+    String? searchQuery,
   }) {
     var filtered = cars;
     if (category != null && category != 'All') {
       filtered = filtered.where((c) => c.category == category).toList();
     }
-    if (location != null && location.isNotEmpty) {
+    if (searchQuery != null && searchQuery.isNotEmpty) {
+      final query = searchQuery.toLowerCase();
       filtered = filtered
           .where(
-            (c) => c.location.toLowerCase().contains(location.toLowerCase()),
+            (c) =>
+                c.brand.toLowerCase().contains(query) ||
+                c.name.toLowerCase().contains(query) ||
+                c.location.toLowerCase().contains(query),
           )
           .toList();
     }

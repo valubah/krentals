@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/utils/app_scroll_behavior.dart';
 import '../../core/utils/date_utils.dart';
 import '../../data/models/car_model.dart';
 import '../blocs/booking/booking_bloc.dart';
@@ -63,22 +63,23 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                     tag: 'car_${car.id}',
                     child: PageView.builder(
                       controller: _pageController,
+                      scrollBehavior: AppScrollBehavior(),
                       itemCount: car.imageUrls.length,
                       itemBuilder: (context, i) {
                         return Stack(
                           children: [
-                            CachedNetworkImage(
-                              imageUrl: car.imageUrls[i],
-                              fit: BoxFit.cover,
-                              width: double.infinity,
-                              placeholder: (_, _) =>
-                                  Container(color: Colors.grey.shade100),
-                              errorWidget: (_, _, _) => Container(
-                                color: Colors.grey.shade100,
-                                child: Icon(
-                                  Icons.directions_car_rounded,
-                                  size: 80,
-                                  color: Colors.grey.shade300,
+                            AspectRatio(
+                              aspectRatio: 16 / 9,
+                              child: Image.asset(
+                                car.imageUrls[i],
+                                fit: BoxFit.cover,
+                                errorBuilder: (_, _, _) => Container(
+                                  color: Colors.grey.shade100,
+                                  child: const Icon(
+                                    Icons.directions_car_rounded,
+                                    size: 100,
+                                    color: Colors.grey,
+                                  ),
                                 ),
                               ),
                             ),

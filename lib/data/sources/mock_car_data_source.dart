@@ -22,12 +22,12 @@ class MockCarDataSource {
       'location': 'Lagos, Nigeria',
       'isAvailable': true,
       'imageUrls': [
-        'https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800', // Front
-        'https://images.unsplash.com/photo-1617788138021-36fdb31a9412?w=800', // Side
-        'https://images.unsplash.com/photo-1617650637118-245f3c9ea565?w=800', // Interior/Rear
+        'assets/images/cars/car_001_1.png',
+        'assets/images/cars/car_001_2.png',
+        'assets/images/cars/car_001_3.png',
       ],
       'description':
-          'Experience the pinnacle of electric performance. The Tesla Model S Plaid accelerates from 0-60 mph in under 2 seconds, offering a range of 396 miles. Premium autopilot, minimalist interior, and over-the-air updates included.',
+          'Experience the pinnacle of electric performance. The Tesla Model S Plaid accelerates from 0-60 mph in under 2 seconds. Featuring a tri-motor setup, it offers unrivaled acceleration and range.',
       'category': 'Sedan',
       'seats': 5,
       'transmission': 'Automatic',
@@ -38,42 +38,30 @@ class MockCarDataSource {
         'Heated Seats',
         'Premium Sound',
         'Fast Charging',
-        'Wi-Fi Hotspot',
       ],
-      'blockedDates': [
-        {'start': '2026-03-05T00:00:00.000', 'end': '2026-03-09T00:00:00.000'},
-        {'start': '2026-03-18T00:00:00.000', 'end': '2026-03-22T00:00:00.000'},
-      ],
+      'blockedDates': [],
     },
     {
       'id': 'car_002',
-      'name': 'Range Rover Sport',
-      'brand': 'Land Rover',
+      'name': 'S-Class',
+      'brand': 'Mercedes-Benz',
       'pricePerDay': 220.0,
       'location': 'Abuja, Nigeria',
       'isAvailable': true,
       'imageUrls': [
-        'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800', // Front
-        'https://images.unsplash.com/photo-1519702213-912fc996d741?w=800', // Side
-        'https://images.unsplash.com/photo-1521743603403-f36894c264b4?w=800', // Detail
+        'assets/images/cars/car_002_1.jpg',
+        'assets/images/cars/car_002_1.jpg',
+        'assets/images/cars/car_002_1.jpg',
       ],
       'description':
-          'Commanding luxury and unstoppable capability. The Range Rover Sport combines breathtaking performance with refined British craftsmanship. Ideal for city driving or off-road adventures across any terrain.',
-      'category': 'SUV',
-      'seats': 7,
+          'The definition of automotive luxury. The Mercedes-Benz S-Class has long been the standard by which all other luxury sedans are measured. Unmatched comfort and safety.',
+      'category': 'Sedan',
+      'seats': 5,
       'transmission': 'Automatic',
       'rating': 4.8,
       'reviewCount': 198,
-      'features': [
-        '4WD',
-        'Panoramic Roof',
-        'Meridian Sound',
-        'Air Suspension',
-        'Off-Road Mode',
-      ],
-      'blockedDates': [
-        {'start': '2026-03-10T00:00:00.000', 'end': '2026-03-14T00:00:00.000'},
-      ],
+      'features': ['Executive Rear Seats', 'Massage Seats', 'Burmester Sound'],
+      'blockedDates': [],
     },
     {
       'id': 'car_003',
@@ -83,115 +71,84 @@ class MockCarDataSource {
       'location': 'Lagos, Nigeria',
       'isAvailable': true,
       'imageUrls': [
-        'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800', // Front 3/4
-        'https://images.unsplash.com/photo-1542362567-b05500269774?w=800', // Side Profile
-        'https://images.unsplash.com/photo-1534093607318-f025413f49cb?w=800', // Rear/Detail
+        'assets/images/cars/car_003_1.jpg',
+        'assets/images/cars/car_003_1.jpg',
+        'assets/images/cars/car_003_1.jpg',
       ],
       'description':
-          'Pure driving nirvana. The Porsche 911 Carrera S is a sports car perfected over 60 years. With 443 hp, rear-wheel steering, and PASM sport suspension, every drive is an event. Manual or PDK available.',
+          'Pure driving nirvana. The Porsche 911 Carrera S is a sports car perfected over 60 years. With its rear-engine layout and iconic silhouette, it delivers an unmatched driving experience.',
       'category': 'Sports',
       'seats': 2,
       'transmission': 'PDK',
       'rating': 4.95,
       'reviewCount': 87,
-      'features': [
-        'Sport Chrono',
-        'PASM',
-        'Bose Sound',
-        'Sport Exhaust',
-        'Launch Control',
-      ],
-      'blockedDates': [
-        {'start': '2026-03-01T00:00:00.000', 'end': '2026-03-03T00:00:00.000'},
-        {'start': '2026-03-25T00:00:00.000', 'end': '2026-03-31T00:00:00.000'},
-      ],
+      'features': ['Sport Chrono', 'PASM', 'Bose Sound'],
+      'blockedDates': [],
     },
     {
       'id': 'car_004',
-      'name': 'G-Wagon AMG',
-      'brand': 'Mercedes-Benz',
-      'pricePerDay': 290.0,
+      'name': 'Range Rover Vogue',
+      'brand': 'Land Rover',
+      'pricePerDay': 260.0,
       'location': 'Port Harcourt, Nigeria',
-      'isAvailable': false,
+      'isAvailable': true,
       'imageUrls': [
-        'https://images.unsplash.com/photo-1563720223185-11003d516935?w=800', // Front 3/4
-        'https://images.unsplash.com/photo-1589148625905-0196e8557b6f?w=800', // Side Profile
-        'https://images.unsplash.com/photo-1596707323531-e94ade50f001?w=800', // Interior
+        'assets/images/cars/car_004_1.jpg',
+        'assets/images/cars/car_004_1.jpg',
+        'assets/images/cars/car_004_1.jpg',
       ],
       'description':
-          'Icon. Legend. G-Class. The Mercedes-AMG G 63 is the definitive luxury off-roader. With its hand-built 4.0L V8 biturbo engine producing 577 hp, it dominates every environment - urban jungle or mountain trail.',
+          'The ultimate luxury SUV. Combining legendary off-road capability with refined comfort and status. The Range Rover Vogue is at home anywhere from the city to the wild.',
       'category': 'SUV',
       'seats': 5,
-      'transmission': 'AMG Speedshift',
+      'transmission': 'Automatic',
       'rating': 4.85,
       'reviewCount': 143,
-      'features': [
-        'AMG Performance',
-        '3 Locking Diffs',
-        'Burmester Sound',
-        'Heated Seats',
-        'Night Package',
-      ],
-      'blockedDates': [
-        {'start': '2026-02-28T00:00:00.000', 'end': '2026-03-30T00:00:00.000'},
-      ],
+      'features': ['4WD', 'Panoramic Roof', 'Meridian Sound'],
+      'blockedDates': [],
     },
     {
       'id': 'car_005',
-      'name': 'Cayenne Turbo',
-      'brand': 'Porsche',
-      'pricePerDay': 265.0,
+      'name': 'M4 Competition',
+      'brand': 'BMW',
+      'pricePerDay': 210.0,
       'location': 'Lagos, Nigeria',
       'isAvailable': true,
       'imageUrls': [
-        'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800', // Front
-        'https://images.unsplash.com/photo-1610443916035-7c010c73229b?w=800', // Rear 3/4
-        'https://images.unsplash.com/photo-1614162692292-7ac56d77771e?w=800', // Interior
+        'assets/images/cars/car_005_1.jpg',
+        'assets/images/cars/car_005_1.jpg',
+        'assets/images/cars/car_005_1.jpg',
       ],
       'description':
-          'Where sports performance meets everyday versatility. The Cayenne Turbo puts 541 hp through all four wheels while wrapping you and your passengers in unrivaled Porsche luxury. Family car by day, sports car by night.',
-      'category': 'SUV',
-      'seats': 5,
-      'transmission': 'Tiptronic S',
+          'The ultimate driving machine. The BMW M4 Competition combines track-ready performance with daily usability. Its inline-6 engine produces exhilarating power.',
+      'category': 'Sports',
+      'seats': 4,
+      'transmission': 'M Steptronic',
       'rating': 4.7,
       'reviewCount': 221,
-      'features': [
-        'Turbo Engine',
-        'Air Suspension',
-        'Panoramic Roof',
-        'PASM',
-        'Rear-Wheel Steering',
-      ],
-      'blockedDates': [
-        {'start': '2026-03-07T00:00:00.000', 'end': '2026-03-11T00:00:00.000'},
-      ],
+      'features': ['M Performance', 'Carbon Roof', 'Harman Kardon'],
+      'blockedDates': [],
     },
     {
       'id': 'car_006',
-      'name': 'EQS 580',
-      'brand': 'Mercedes-Benz',
-      'pricePerDay': 195.0,
+      'name': 'R8 V10 Performance',
+      'brand': 'Audi',
+      'pricePerDay': 380.0,
       'location': 'Abuja, Nigeria',
       'isAvailable': true,
       'imageUrls': [
-        'https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=800', // Front
-        'https://images.unsplash.com/photo-1617469614457-37dfd08006e2?w=800', // Side
-        'https://images.unsplash.com/photo-1617469651910-449e75528825?w=800', // Interior
+        'assets/images/cars/car_006_1.jpg',
+        'assets/images/cars/car_006_1.jpg',
+        'assets/images/cars/car_006_1.jpg',
       ],
       'description':
-          'The future of luxury is electric. The Mercedes EQS 580 features the world\'s largest automotive display - the MBUX Hyperscreen - spanning the entire dashboard. 516 hp, 350-mile range, and pampering at every turn.',
-      'category': 'Sedan',
-      'seats': 5,
-      'transmission': 'Automatic',
-      'rating': 4.75,
+          'A supercar for every day. The Audi R8 V10 shares its DNA with the Lamborghini Huracán, offering a naturally aspirated V10 symphony and legendary Quattro grip.',
+      'category': 'Sports',
+      'seats': 2,
+      'transmission': 'S Tronic',
+      'rating': 4.9,
       'reviewCount': 94,
-      'features': [
-        'MBUX Hyperscreen',
-        'Air Suspension',
-        'Burmester 3D',
-        'HEPA Filter',
-        'Rear Axle Steering',
-      ],
+      'features': ['V10 Engine', 'Quattro', 'Virtual Cockpit'],
       'blockedDates': [],
     },
   ];

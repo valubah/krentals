@@ -2,46 +2,98 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/car_model.dart';
 import '../blocs/car_list/car_list_bloc.dart';
 import '../widgets/app_widgets.dart';
 import 'car_detail_screen.dart';
 
-class CarListScreen extends StatelessWidget {
+class CarListScreen extends StatefulWidget {
   const CarListScreen({super.key});
 
+  @override
+  State<CarListScreen> createState() => _CarListScreenState();
+}
+
+class _CarListScreenState extends State<CarListScreen> {
   static const _categories = ['All', 'SUV', 'Sedan', 'Sports'];
+  bool _isSearching = false;
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'DriveEase',
-              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                color: AppTheme.accent,
-                letterSpacing: -1,
+        title: _isSearching
+            ? TextField(
+                controller: _searchController,
+                autofocus: true,
+                style: const TextStyle(color: AppTheme.textPrimary),
+                decoration: const InputDecoration(
+                  hintText: 'Search brand, model, or city...',
+                  border: InputBorder.none,
+                  hintStyle: TextStyle(color: AppTheme.textSecondary),
+                ),
+                onChanged: (value) {
+                  final state = context.read<CarListBloc>().state;
+                  final category = state is CarListLoaded
+                      ? state.activeCategory
+                      : null;
+                  context.read<CarListBloc>().add(
+                    CarListFilterChanged(
+                      category: category,
+                      searchQuery: value,
+                    ),
+                  );
+                },
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'K Rentals',
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      color: AppTheme.accent,
+                      letterSpacing: -1,
+                    ),
+                  ),
+                  Text(
+                    'Premium car rentals',
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium?.copyWith(fontSize: 12),
+                  ),
+                ],
               ),
-            ),
-            Text(
-              'Premium car rentals',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(fontSize: 12),
-            ),
-          ],
-        ),
         toolbarHeight: 70,
         actions: [
           IconButton(
-            icon: const Icon(Icons.search_rounded),
-            onPressed: () {},
+            icon: Icon(
+              _isSearching ? Icons.close_rounded : Icons.search_rounded,
+            ),
+            onPressed: () {
+              setState(() {
+                if (_isSearching) {
+                  _isSearching = false;
+                  _searchController.clear();
+                  final state = context.read<CarListBloc>().state;
+                  final category = state is CarListLoaded
+                      ? state.activeCategory
+                      : null;
+                  context.read<CarListBloc>().add(
+                    CarListFilterChanged(category: category, searchQuery: ''),
+                  );
+                } else {
+                  _isSearching = true;
+                }
+              });
+            },
           ),
           const SizedBox(width: 4),
         ],
@@ -51,12 +103,13 @@ class CarListScreen extends StatelessWidget {
           return RefreshIndicator(
             color: AppTheme.accent,
             onRefresh: () async {
-              context
-                  .read<CarListBloc>()
-                  .add(const CarListRefreshRequested());
+              context.read<CarListBloc>().add(const CarListRefreshRequested());
               // Wait for the refresh to complete
               await context.read<CarListBloc>().stream.firstWhere(
-                    (s) => s is CarListLoaded || s is CarListError || s is CarListEmpty,
+                (s) =>
+                    s is CarListLoaded ||
+                    s is CarListError ||
+                    s is CarListEmpty,
               );
             },
             child: CustomScrollView(
@@ -85,7 +138,7 @@ class CarListScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     sliver: SliverList(
                       delegate: SliverChildBuilderDelegate(
-                            (_, _) => const CarCardShimmer(),
+                        (_, _) => const CarCardShimmer(),
                         childCount: 4,
                       ),
                     ),
@@ -95,37 +148,37 @@ class CarListScreen extends StatelessWidget {
                     child: ErrorState(
                       message: state.message,
                       isNetworkError: state.isNetworkError,
-                      onRetry: () => context
-                          .read<CarListBloc>()
-                          .add(const CarListLoadRequested()),
+                      onRetry: () => context.read<CarListBloc>().add(
+                        const CarListLoadRequested(),
+                      ),
                     ),
                   )
                 else if (state is CarListEmpty)
-                    SliverFillRemaining(
-                      child: EmptyState(
-                        icon: Icons.directions_car_outlined,
-                        title: 'No Cars Found',
-                        subtitle:
-                        'There are no cars available at the moment. Check back soon.',
-                        onAction: () => context
-                            .read<CarListBloc>()
-                            .add(const CarListLoadRequested()),
+                  SliverFillRemaining(
+                    child: EmptyState(
+                      icon: Icons.directions_car_outlined,
+                      title: 'No Cars Found',
+                      subtitle:
+                          'There are no cars available at the moment. Check back soon.',
+                      onAction: () => context.read<CarListBloc>().add(
+                        const CarListLoadRequested(),
                       ),
-                    )
-                  else if (state is CarListLoaded || state is CarListRefreshing)
-                      _CarGrid(
-                        cars: state is CarListLoaded
-                            ? state.filteredCars
-                            : (state as CarListRefreshing).currentCars,
-                      )
-                    else
-                      SliverFillRemaining(
-                        child: EmptyState(
-                          icon: Icons.directions_car_outlined,
-                          title: 'Welcome to DriveEase',
-                          subtitle: 'Pull down to load available cars.',
-                        ),
-                      ),
+                    ),
+                  )
+                else if (state is CarListLoaded || state is CarListRefreshing)
+                  _CarGrid(
+                    cars: state is CarListLoaded
+                        ? state.filteredCars
+                        : (state as CarListRefreshing).currentCars,
+                  )
+                else
+                  SliverFillRemaining(
+                    child: EmptyState(
+                      icon: Icons.directions_car_outlined,
+                      title: 'Welcome to K Rentals',
+                      subtitle: 'Pull down to load available cars.',
+                    ),
+                  ),
 
                 const SliverToBoxAdapter(child: SizedBox(height: 24)),
               ],
@@ -202,11 +255,31 @@ class _CarGrid extends StatelessWidget {
       );
     }
 
+    final isDesktop = MediaQuery.of(context).size.width > 900;
+
+    if (isDesktop) {
+      return SliverPadding(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        sliver: SliverGrid(
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 450,
+            mainAxisSpacing: 24,
+            crossAxisSpacing: 24,
+            childAspectRatio: 0.85,
+          ),
+          delegate: SliverChildBuilderDelegate(
+            (context, i) => _CarCard(car: cars[i]),
+            childCount: cars.length,
+          ),
+        ),
+      );
+    }
+
     return SliverPadding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       sliver: SliverList(
         delegate: SliverChildBuilderDelegate(
-              (context, i) => _CarCard(car: cars[i]),
+          (context, i) => _CarCard(car: cars[i]),
           childCount: cars.length,
         ),
       ),
@@ -251,27 +324,22 @@ class _CarCard extends StatelessWidget {
             Hero(
               tag: 'car_${car.id}',
               child: ClipRRect(
-                borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(16)),
-                child: CachedNetworkImage(
-                  imageUrl: car.imageUrls.first,
-                  height: 180,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                  placeholder: (_, _) => Container(
-                    height: 180,
-                    color: Colors.grey.shade100,
-                    child: const Center(
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    ),
-                  ),
-                  errorWidget: (_, _, _) => Container(
-                    height: 180,
-                    color: Colors.grey.shade100,
-                    child: Icon(
-                      Icons.directions_car_rounded,
-                      size: 60,
-                      color: Colors.grey.shade300,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(16),
+                ),
+                child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: Image.asset(
+                    car.imageUrls.first,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, _, _) => Container(
+                      color: Colors.grey.shade100,
+                      child: Icon(
+                        Icons.directions_car_rounded,
+                        size: 60,
+                        color: Colors.grey.shade300,
+                      ),
                     ),
                   ),
                 ),
@@ -291,13 +359,11 @@ class _CarCard extends StatelessWidget {
                           children: [
                             Text(
                               car.brand,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
+                              style: Theme.of(context).textTheme.bodyMedium
                                   ?.copyWith(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 12,
-                              ),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12,
+                                  ),
                             ),
                             Text(
                               car.name,
@@ -313,18 +379,24 @@ class _CarCard extends StatelessWidget {
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      Icon(Icons.location_on_outlined,
-                          size: 14, color: AppTheme.textSecondary),
+                      Icon(
+                        Icons.location_on_outlined,
+                        size: 14,
+                        color: AppTheme.textSecondary,
+                      ),
                       const SizedBox(width: 4),
                       Text(
                         car.location,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontSize: 12,
-                        ),
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodyMedium?.copyWith(fontSize: 12),
                       ),
                       const SizedBox(width: 12),
-                      Icon(Icons.star_rounded,
-                          size: 14, color: Colors.amber.shade600),
+                      Icon(
+                        Icons.star_rounded,
+                        size: 14,
+                        color: Colors.amber.shade600,
+                      ),
                       const SizedBox(width: 2),
                       Text(
                         car.rating.toString(),
