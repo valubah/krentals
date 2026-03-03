@@ -1,5 +1,4 @@
 ﻿// lib/presentation/widgets/app_widgets.dart
-// Barrel of shared UI components
 
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
@@ -111,7 +110,6 @@ class CarCardShimmer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Image placeholder
             Container(
               height: 180,
               decoration: const BoxDecoration(
@@ -344,7 +342,7 @@ class StatusBadge extends StatelessWidget {
   }
 }
 
-// --- App Image with Loading & Error States ---
+// --- App Image — handles both https:// network URLs and assets/ paths ---
 class AppImage extends StatelessWidget {
   final String path;
   final BoxFit fit;
@@ -359,35 +357,67 @@ class AppImage extends StatelessWidget {
     this.height,
   });
 
+  bool get _isNetwork =>
+      path.startsWith('http://') || path.startsWith('https://');
+
+  Widget _errorWidget() {
+    return Container(
+      width: width,
+      height: height,
+      color: Colors.grey.shade100,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.directions_car_outlined,
+            color: Colors.grey.shade400,
+            size: 40,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Image unavailable',
+            style: TextStyle(color: Colors.grey.shade500, fontSize: 11),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _loadingWidget() {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey.shade200,
+      highlightColor: Colors.grey.shade50,
+      child: Container(
+        width: width,
+        height: height,
+        color: Colors.white,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (_isNetwork) {
+      return Image.network(
+        path,
+        width: width,
+        height: height,
+        fit: fit,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return _loadingWidget();
+        },
+        errorBuilder: (context, error, stackTrace) => _errorWidget(),
+      );
+    }
+
+    // Fallback for local assets
     return Image.asset(
       path,
       width: width,
       height: height,
       fit: fit,
-      errorBuilder: (context, error, stackTrace) {
-        return Container(
-          width: width,
-          height: height,
-          color: Colors.grey.shade100,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.image_not_supported_outlined,
-                color: Colors.grey.shade400,
-                size: 32,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Image unavailable',
-                style: TextStyle(color: Colors.grey.shade500, fontSize: 10),
-              ),
-            ],
-          ),
-        );
-      },
+      errorBuilder: (context, error, stackTrace) => _errorWidget(),
     );
   }
 }
